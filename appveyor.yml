@@ -21,6 +21,7 @@ before_build:
 - ps: . .\patch-version.ps1 src\stashbox.mocking.rocks\stashbox.mocking.rocks.csproj {version}
 
 build_script:
+- nuget restore src\stashbox.mocking.sln
 - msbuild /t:Restore /p:Configuration=%CONFIGURATION% src\stashbox.mocking.sln
 - msbuild /t:Build /p:Configuration=%CONFIGURATION% src\stashbox.mocking.sln
   
