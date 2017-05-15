@@ -43,7 +43,7 @@ test_script:
 - dotnet test src\stashbox.mocking.nsubstitute.tests\stashbox.mocking.nsubstitute.tests.csproj -c %CONFIGURATION% -f netcoreapp1.1 --no-build
 - dotnet test src\stashbox.mocking.rocks.tests\stashbox.mocking.rocks.tests.csproj -c %CONFIGURATION% -f net462 --no-build
 - dotnet test src\stashbox.mocking.rocks.tests\stashbox.mocking.rocks.tests.csproj -c %CONFIGURATION% -f netcoreapp1.1 --no-build
-- xunit.console src\stashbox.mocking.rhino.mocks.tests\bin\%CONFIGURATION%\Stashbox.Mocking.Rhino.Mocks.Tests.dll /appveyor
+- %xunit20%\xunit.console.x86 src\stashbox.mocking.rhino.mocks.tests\bin\%CONFIGURATION%\Stashbox.Mocking.Rhino.Mocks.Tests.dll -appveyor
   
 artifacts:
 - path: artifacts\Stashbox.*.nupkg
