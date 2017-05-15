@@ -15,10 +15,10 @@ assembly_info:
   assembly_informational_version: '{version}'
 
 before_build:
-- ps: . .\patch-version.ps1 src\stashbox.mocking.fakeiteasy\stashbox.mocking.fakeiteasy.csproj %APPVEYOR_BUILD_VERSION%
-- ps: . .\patch-version.ps1 src\stashbox.mocking.moq\stashbox.mocking.moq.csproj %APPVEYOR_BUILD_VERSION%
-- ps: . .\patch-version.ps1 src\stashbox.mocking.nsubstitute\stashbox.mocking.nsubstitute.csproj %APPVEYOR_BUILD_VERSION%
-- ps: . .\patch-version.ps1 src\stashbox.mocking.rocks\stashbox.mocking.rocks.csproj %APPVEYOR_BUILD_VERSION%
+- ps: . .\patch-version.ps1 src\stashbox.mocking.fakeiteasy\stashbox.mocking.fakeiteasy.csproj $env:appveyor_build_version
+- ps: . .\patch-version.ps1 src\stashbox.mocking.moq\stashbox.mocking.moq.csproj $env:appveyor_build_version
+- ps: . .\patch-version.ps1 src\stashbox.mocking.nsubstitute\stashbox.mocking.nsubstitute.csproj $env:appveyor_build_version
+- ps: . .\patch-version.ps1 src\stashbox.mocking.rocks\stashbox.mocking.rocks.csproj $env:appveyor_build_version
 
 build_script:
 - nuget restore src\stashbox.mocking.sln
