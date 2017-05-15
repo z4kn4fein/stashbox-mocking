@@ -34,7 +34,7 @@ install:
   - export PATH="$DOTNET_INSTALL_DIR:$PATH"
   
 before_script:
-  - dotnet restore
+  - dotnet restore src/stashbox.mocking.sln
 
 script:
   - dotnet test src/stashbox.mocking.fakeiteasy.tests/stashbox.mocking.fakeiteasy.tests.csproj -c Release -f netcoreapp1.1
