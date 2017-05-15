@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp1.1</TargetFramework>
+        <TargetFrameworks>net462;netcoreapp1.1</TargetFrameworks>
         <AssemblyName>Stashbox.Mocking.Rocks.Tests</AssemblyName>
         <RootNamespace>Stashbox.Mocking.Rocks.Tests</RootNamespace>
         <PackageTargetFallback>$(PackageTargetFallback);dotnet5.4;portable-net45+win8</PackageTargetFallback>
