@@ -19,6 +19,7 @@
         <PackageReference Include="xunit" Version="2.2.0" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
         <PackageReference Include="Rocks" Version="2.0.0" />
+        <PackageReference Include="xunit.extensibility.execution" Version="2.2.0" Condition="'$(TargetFramework)' == 'net462'" />
     </ItemGroup>
 
     <ItemGroup>

@@ -1,12 +1,10 @@
 using System;
 using Rocks;
 using Rocks.Exceptions;
-using Stashbox.Mocking;
-using Stashbox.Mocking.Rocks;
 using Stashbox.Mocking.Tests;
 using Xunit;
 
-namespace stashbox.mocking.rocks.tests
+namespace Stashbox.Mocking.Rocks.Tests
 {
     public class StashRocksTests
     {
