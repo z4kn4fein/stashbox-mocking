@@ -1,10 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net462;netcoreapp1.1</TargetFrameworks>
+        <TargetFramework>netcoreapp1.1</TargetFramework>
         <AssemblyName>Stashbox.Mocking.Rocks.Tests</AssemblyName>
         <RootNamespace>Stashbox.Mocking.Rocks.Tests</RootNamespace>
         <PackageTargetFallback>$(PackageTargetFallback);dotnet5.4;portable-net45+win8</PackageTargetFallback>
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>../../sn.snk</AssemblyOriginatorKeyFile>
+        <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
     </PropertyGroup>
 
     <ItemGroup>

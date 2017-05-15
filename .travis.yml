@@ -40,4 +40,4 @@ script:
   - dotnet test src/stashbox.mocking.fakeiteasy.tests/stashbox.mocking.fakeiteasy.tests.csproj -c Release -f netcoreapp1.1
   - dotnet test src/stashbox.mocking.moq.tests/stashbox.mocking.moq.tests.csproj -c Release -f netcoreapp1.1
   - dotnet test src/stashbox.mocking.nsubstitute.tests/stashbox.mocking.nsubstitute.tests.csproj -c Release -f netcoreapp1.1
-  - dotnet test src/stashbox.mocking.rocks.tests/stashbox.mocking.rocks.tests.csproj -c Release -f netcoreapp1.1
+#  - dotnet test src/stashbox.mocking.rocks.tests/stashbox.mocking.rocks.tests.csproj -c Release -f netcoreapp1.1
