@@ -32,7 +32,7 @@ after_build:
 - msbuild /t:Pack /p:IncludeSymbols=true /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.moq\stashbox.mocking.moq.csproj
 - msbuild /t:Pack /p:IncludeSymbols=true /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.nsubstitute\stashbox.mocking.nsubstitute.csproj
 - msbuild /t:Pack /p:IncludeSymbols=true /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.rocks\stashbox.mocking.rocks.csproj
-- nuget pack src\stashbox.mocking.rhino.mocks\stashbox.mocking.rhino.mocks.csproj -Symbols -OutputDirectory ..\..\artifacts
+- nuget pack src\stashbox.mocking.rhino.mocks\stashbox.mocking.rhino.mocks.csproj -Symbols -OutputDirectory %APPVEYOR_BUILD_FOLDER%\artifacts
 
 test_script:
 - dotnet test src\stashbox.mocking.fakeiteasy.tests\stashbox.mocking.fakeiteasy.tests.csproj -c %CONFIGURATION% -f net45 --no-build
