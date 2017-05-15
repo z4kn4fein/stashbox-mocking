@@ -1,0 +1,49 @@
+version: 1.1.{build}
+
+pull_requests:
+  do_not_increment_build_number: true
+  
+configuration: Release
+
+image: Visual Studio 2017
+
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+
+before_build:
+- ps: . .\patch-version.ps1 src\stashbox.mocking.fakeiteasy\stashbox.mocking.fakeiteasy.csproj {version}
+- ps: . .\patch-version.ps1 src\stashbox.mocking.moq\stashbox.mocking.moq.csproj {version}
+- ps: . .\patch-version.ps1 src\stashbox.mocking.nsubstitute\stashbox.mocking.nsubstitute.csproj {version}
+- ps: . .\patch-version.ps1 src\stashbox.mocking.rocks\stashbox.mocking.rocks.csproj {version}
+
+build_script:
+- msbuild /t:Restore /p:Configuration=%CONFIGURATION% src\stashbox.mocking.sln
+- msbuild /t:Build /p:Configuration=%CONFIGURATION% src\stashbox.mocking.sln
+  
+after_build:
+- msbuild /t:Pack /p:IncludeSymbols=true /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.fakeiteasy\stashbox.mocking.fakeiteasy.csproj
+- msbuild /t:Pack /p:IncludeSymbols=true /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.moq\stashbox.mocking.moq.csproj
+- msbuild /t:Pack /p:IncludeSymbols=true /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.nsubstitute\stashbox.mocking.nsubstitute.csproj
+- msbuild /t:Pack /p:IncludeSymbols=true /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.rocks\stashbox.mocking.rocks.csproj
+
+test_script:
+- dotnet test src\stashbox.mocking.fakeiteasy.tests\stashbox.mocking.fakeiteasy.tests.csproj -c %CONFIGURATION% --no-build
+- dotnet test src\stashbox.mocking.moq.tests\stashbox.mocking.moq.tests.csproj -c %CONFIGURATION% --no-build
+- dotnet test src\stashbox.mocking.nsubstitute.tests\stashbox.mocking.nsubstitute.tests.csproj -c %CONFIGURATION% --no-build
+- dotnet test src\stashbox.mocking.rocks.tests\stashbox.mocking.rocks.tests.csproj -c %CONFIGURATION% --no-build
+  
+artifacts:
+- path: artifacts\Stashbox.*.nupkg
+  name: NuGet
+
+notifications:
+- provider: Email
+  to:
+  - peter.csajtai@outlook.com
+  on_build_success: false
+  on_build_failure: true
+  on_build_status_changed: true
