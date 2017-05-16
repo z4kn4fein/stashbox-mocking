@@ -27,7 +27,7 @@ using (var stash = StashMoq.Create())
     //check the result
     Assert.Equal("test", result);
     
-} //StashMoq will call the `Verify()` for all configured expectations on it's dispose
+} //StashMoq will call the Verify() method on all configured expectations on it's dispose
 ```
 > You can also set the `verifyAll` parameter of `StashMoq` with that it will call the `VerifyAll()` on the used mock repository.
 `StashMoq.Create(verifyAll: true)`
@@ -131,7 +131,7 @@ using (var stash = StashRhino.Create())
     //check the result
     Assert.Equal("test", result);   
     
-} //StashRhino will call the `VerifyAllExpectations()` for all configured expectations on it's dispose
+} //StashRhino will call the VerifyAllExpectations() method on all configured expectations on it's dispose
 ```
 
 ### Mock types
@@ -171,7 +171,7 @@ using (var stash = StashRocks.Create())
     //check the result
     Assert.Equal("test", result);   
 
-} //StashRocks will call the `Verify()` for all configured expectations on it's dispose
+} //StashRocks will call the Verify() method on all configured expectations on it's dispose
 ```
 
 ## Further things that each package offers
