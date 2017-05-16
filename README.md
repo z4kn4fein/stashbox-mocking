@@ -5,22 +5,6 @@ Mocking framework integrations for Stashbox that provide automatic mock creation
 --- | --- | --- | --- | ---
 [![NuGet Version](https://buildstats.info/nuget/Stashbox.Moq)](https://www.nuget.org/packages/Stashbox.Moq/) | [![NuGet Version](https://buildstats.info/nuget/Stashbox.FakeItEasy)](https://www.nuget.org/packages/Stashbox.FakeItEasy/) | [![NuGet Version](https://buildstats.info/nuget/Stashbox.NSubstitute)](https://www.nuget.org/packages/Stashbox.NSubstitute/) | [![NuGet Version](https://buildstats.info/nuget/Stashbox.RhinoMocks)](https://www.nuget.org/packages/Stashbox.RhinoMocks/) | [![NuGet Version](https://buildstats.info/nuget/Stashbox.Rocks)](https://www.nuget.org/packages/Stashbox.Rocks/)
 
-## Things that each package offers
-- All package allows the service instantiation by a selected constructor with pre-evaluated arguments:
-```c#
-var service = stash.GetWithConstructorArgs<Service>(mockObject1, mockObject2);
-
-//you can also use a placeholder argument where you don't want to set a concrete object
-var service = stash.GetWithConstructorArgs<Service>(StashArg.Any<IMock>(), mockObject2);
-```
-> If you use an argument placeholder with a non-mockable type, the framework will throw a `NonMockableTypeException`.
-
-- All package allows the dependency override with pre-evaluated dependencies:
-```c#
-//this will inject the `mockObject1` into the created `Service` everywhere it fits by it's type
-var service = stash.GetWithParamOverrides<Service>(mockObject1);
-```
-
 ## Moq
 You can use the auto mock framework by creating a `StashMoq` instance wrapped in a using statement, on it's disposal it will call `Verify()` on all the configured expectations.
 ```c#
@@ -188,4 +172,20 @@ using (var stash = StashRocks.Create())
     Assert.Equal("test", result);   
 
 } //StashRocks will call the `Verify()` for all configured expectations on it's dispose
+```
+
+## Further things that each package offers
+- All package allows the service instantiation by a selected constructor with pre-evaluated arguments:
+```c#
+var service = stash.GetWithConstructorArgs<Service>(mockObject1, mockObject2);
+
+//you can also use a placeholder argument where you don't want to set a concrete object
+var service = stash.GetWithConstructorArgs<Service>(StashArg.Any<IMock>(), mockObject2);
+```
+> If you use an argument placeholder with a non-mockable type, the framework will throw a `NonMockableTypeException`.
+
+- All package allows the dependency override with pre-evaluated dependencies:
+```c#
+//this will inject the `mockObject1` into the created `Service` everywhere it fits by it's type
+var service = stash.GetWithParamOverrides<Service>(mockObject1);
 ```
