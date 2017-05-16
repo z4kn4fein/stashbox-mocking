@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Stashbox.Mocking.RhinoMocks")]
+[assembly: AssemblyTitle("Stashbox.RhinoMocks")]
 [assembly: AssemblyDescription("RhinoMocks auto mocking integration for Stashbox.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Peter Csajtai")]
-[assembly: AssemblyProduct("Stashbox.Mocking.RhinoMocks")]
+[assembly: AssemblyProduct("Stashbox.RhinoMocks")]
 [assembly: AssemblyCopyright("Copyright © Peter Csajtai 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
