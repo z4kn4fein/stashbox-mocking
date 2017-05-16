@@ -30,6 +30,7 @@
     <ItemGroup>
       <Compile Include="..\MockingBase.cs" Link="MockingBase.cs" />
       <Compile Include="..\NotMockableTypeException.cs" Link="NotMockableTypeException.cs" />
+      <Compile Include="..\ResolverBase.cs" Link="ResolverBase.cs" />
       <Compile Include="..\TypeExtensions.cs" Link="TypeExtensions.cs" />
     </ItemGroup>
 

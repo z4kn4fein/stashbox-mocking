@@ -1,6 +1,5 @@
 ﻿using System;
 using NSubstitute;
-using Stashbox.Mocking.FakeItEasy;
 using Stashbox.Utils;
 
 namespace Stashbox.Mocking.NSubstitute
