@@ -80,7 +80,7 @@ using (var stash = StashItEasy.Create(x => x.Strict())) //the default will be st
     stash.Fake<IDependency>();
     
     //you can also override the default config
-    stash.Mock<IDependency2>(x => x.Implements<IDependency3>());
+    stash.Fake<IDependency>(x => x.Implements<IDependency3>());
 }
 ```
 
