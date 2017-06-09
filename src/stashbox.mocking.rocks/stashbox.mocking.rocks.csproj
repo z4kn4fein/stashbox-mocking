@@ -35,8 +35,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Rocks" Version="2.0.0" />
-        <PackageReference Include="Stashbox" Version="2.5.1" />
+        <PackageReference Include="Rocks" Version="2.1.0" />
+        <PackageReference Include="Stashbox" Version="2.5.2" />
     </ItemGroup>
 
 </Project>
