@@ -16,7 +16,7 @@ namespace Stashbox.Mocking
         /// <summary>
         /// The used <see cref="IStashboxContainer"/> instance.
         /// </summary>
-        protected IStashboxContainer Container { get; }
+        public IStashboxContainer Container { get; }
 
         /// <summary>
         /// The requested NON-mock types.
