@@ -37,12 +37,13 @@ after_build:
 test_script:
 - dotnet test src\stashbox.mocking.fakeiteasy.tests\stashbox.mocking.fakeiteasy.tests.csproj -c %CONFIGURATION% -f net452 --no-build
 - dotnet test src\stashbox.mocking.fakeiteasy.tests\stashbox.mocking.fakeiteasy.tests.csproj -c %CONFIGURATION% -f netcoreapp1.1 --no-build
+- dotnet test src\stashbox.mocking.fakeiteasy.tests\stashbox.mocking.fakeiteasy.tests.csproj -c %CONFIGURATION% -f netcoreapp2.0 --no-build
 - dotnet test src\stashbox.mocking.moq.tests\stashbox.mocking.moq.tests.csproj -c %CONFIGURATION% -f net452 --no-build
 - dotnet test src\stashbox.mocking.moq.tests\stashbox.mocking.moq.tests.csproj -c %CONFIGURATION% -f netcoreapp1.1 --no-build
+- dotnet test src\stashbox.mocking.moq.tests\stashbox.mocking.moq.tests.csproj -c %CONFIGURATION% -f netcoreapp2.0 --no-build
 - dotnet test src\stashbox.mocking.nsubstitute.tests\stashbox.mocking.nsubstitute.tests.csproj -c %CONFIGURATION% -f net452 --no-build
 - dotnet test src\stashbox.mocking.nsubstitute.tests\stashbox.mocking.nsubstitute.tests.csproj -c %CONFIGURATION% -f netcoreapp1.1 --no-build
-- dotnet test src\stashbox.mocking.rocks.tests\stashbox.mocking.rocks.tests.csproj -c %CONFIGURATION% -f net462 --no-build
-- dotnet test src\stashbox.mocking.rocks.tests\stashbox.mocking.rocks.tests.csproj -c %CONFIGURATION% -f netcoreapp1.1 --no-build
+- dotnet test src\stashbox.mocking.rocks.tests\stashbox.mocking.rocks.tests.csproj -c %CONFIGURATION% -f netcoreapp2.0 --no-build
 - dotnet test src\stashbox.mocking.rhino.mocks.tests\stashbox.mocking.rhino.mocks.tests.csproj -c %CONFIGURATION% -f net452 --no-build
   
 artifacts:
