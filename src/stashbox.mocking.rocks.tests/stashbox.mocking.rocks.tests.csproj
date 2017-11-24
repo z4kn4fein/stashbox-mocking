@@ -1,10 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net462;netcoreapp2.0</TargetFrameworks>
+        <TargetFramework>netcoreapp2.0</TargetFramework>
         <AssemblyName>Stashbox.Mocking.Rocks.Tests</AssemblyName>
         <RootNamespace>Stashbox.Mocking.Rocks.Tests</RootNamespace>
-        <PackageTargetFallback>$(PackageTargetFallback);dotnet5.4;portable-net45+win8</PackageTargetFallback>
         <SignAssembly>true</SignAssembly>
         <AssemblyOriginatorKeyFile>../../sn.snk</AssemblyOriginatorKeyFile>
         <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
@@ -19,7 +18,6 @@
         <PackageReference Include="Rocks" Version="3.1.0" />
         <PackageReference Include="xunit" Version="2.3.1" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
-        <PackageReference Include="xunit.extensibility.execution" Version="2.3.1" Condition="'$(TargetFramework)' == 'net462'" />
     </ItemGroup>
 
     <ItemGroup>

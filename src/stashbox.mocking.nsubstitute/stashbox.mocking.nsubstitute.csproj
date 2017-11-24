@@ -4,26 +4,26 @@
     <TargetFrameworks>net45;netstandard1.3</TargetFrameworks>
     <AssemblyName>Stashbox.Mocking.NSubstitute</AssemblyName>
     <RootNamespace>Stashbox.Mocking.NSubstitute</RootNamespace>
-      <AssemblyTitle>Stashbox.Mocking.NSubstitute</AssemblyTitle>
-      <PackageId>Stashbox.NSubstitute</PackageId>
-      <Authors>Peter Csajtai</Authors>
-      <Company>Peter Csajtai</Company>
-      <Product>Stashbox.NSubstitute</Product>
-      <Copyright>Copyright © Peter Csajtai 2017</Copyright>
-      <PackageLicenseUrl>https://raw.githubusercontent.com/z4kn4fein/stashbox-mocking/master/LICENSE</PackageLicenseUrl>
-      <PackageProjectUrl>https://github.com/z4kn4fein/stashbox-mocking</PackageProjectUrl>
-      <PackageIconUrl>https://goo.gl/I3hRfL</PackageIconUrl>
-      <RepositoryUrl>https://github.com/z4kn4fein/stashbox-mocking</RepositoryUrl>
-      <RepositoryType>git</RepositoryType>
-      <PackageTags>Stashbox NSubstitute mock unit test mocking</PackageTags>
-      <Description>NSubstitute auto mocking integration for Stashbox.</Description>
-      <WarningsAsErrors>true</WarningsAsErrors>
-      <GenerateDocumentationFile>true</GenerateDocumentationFile>
-      <SignAssembly>true</SignAssembly>
-      <AssemblyOriginatorKeyFile>../../sn.snk</AssemblyOriginatorKeyFile>
-      <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
-      <Version>1.0.0</Version>
-      <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <AssemblyTitle>Stashbox.Mocking.NSubstitute</AssemblyTitle>
+    <PackageId>Stashbox.NSubstitute</PackageId>
+    <Authors>Peter Csajtai</Authors>
+    <Company>Peter Csajtai</Company>
+    <Product>Stashbox.NSubstitute</Product>
+    <Copyright>Copyright © Peter Csajtai 2017</Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/z4kn4fein/stashbox-mocking/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/z4kn4fein/stashbox-mocking</PackageProjectUrl>
+    <PackageIconUrl>https://goo.gl/I3hRfL</PackageIconUrl>
+    <RepositoryUrl>https://github.com/z4kn4fein/stashbox-mocking</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Stashbox NSubstitute mock unit test mocking</PackageTags>
+    <Description>NSubstitute auto mocking integration for Stashbox.</Description>
+    <WarningsAsErrors>true</WarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>../../sn.snk</AssemblyOriginatorKeyFile>
+    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+    <Version>1.0.0</Version>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
