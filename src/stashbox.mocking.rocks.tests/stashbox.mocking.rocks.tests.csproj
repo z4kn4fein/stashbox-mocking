@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net462;netcoreapp1.1</TargetFrameworks>
+        <TargetFrameworks>net462;netcoreapp2.0</TargetFrameworks>
         <AssemblyName>Stashbox.Mocking.Rocks.Tests</AssemblyName>
         <RootNamespace>Stashbox.Mocking.Rocks.Tests</RootNamespace>
         <PackageTargetFallback>$(PackageTargetFallback);dotnet5.4;portable-net45+win8</PackageTargetFallback>
@@ -15,11 +15,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
-        <PackageReference Include="xunit" Version="2.2.0" />
-        <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
-        <PackageReference Include="Rocks" Version="2.1.0" />
-        <PackageReference Include="xunit.extensibility.execution" Version="2.2.0" Condition="'$(TargetFramework)' == 'net462'" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
+        <PackageReference Include="Rocks" Version="3.1.0" />
+        <PackageReference Include="xunit" Version="2.3.1" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+        <PackageReference Include="xunit.extensibility.execution" Version="2.3.1" Condition="'$(TargetFramework)' == 'net462'" />
     </ItemGroup>
 
     <ItemGroup>

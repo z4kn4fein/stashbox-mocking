@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using NSubstitute;
+﻿using NSubstitute;
 using Stashbox.Entity;
 using Stashbox.Infrastructure;
+using Stashbox.Resolution;
+using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace Stashbox.Mocking.NSubstitute
 {
@@ -13,7 +14,7 @@ namespace Stashbox.Mocking.NSubstitute
             : base(requestedTypes)
         { }
 
-        public override Expression GetExpression(IContainerContext containerContext, TypeInformation typeInfo, ResolutionInfo resolutionInfo) =>
+        public override Expression GetExpression(IContainerContext containerContext, TypeInformation typeInfo, ResolutionContext resolutionInfo) =>
             Expression.Constant(Substitute.For(new[] { typeInfo.Type }, new object[] { }));
     }
 }

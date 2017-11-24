@@ -1,9 +1,10 @@
-﻿using System;
+﻿using FakeItEasy.Sdk;
+using Stashbox.Entity;
+using Stashbox.Infrastructure;
+using Stashbox.Resolution;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Stashbox.Entity;
-using FakeItEasy.Sdk;
-using Stashbox.Infrastructure;
 
 namespace Stashbox.Mocking.FakeItEasy
 {
@@ -13,7 +14,7 @@ namespace Stashbox.Mocking.FakeItEasy
             : base(requestedTypes)
         { }
 
-        public override Expression GetExpression(IContainerContext containerContext, TypeInformation typeInfo, ResolutionInfo resolutionInfo) =>
+        public override Expression GetExpression(IContainerContext containerContext, TypeInformation typeInfo, ResolutionContext resolutionInfo) =>
             Expression.Constant(Create.Dummy(typeInfo.Type));
     }
 }

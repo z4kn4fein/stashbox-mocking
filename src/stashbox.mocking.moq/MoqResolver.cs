@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Moq;
+using Stashbox.Entity;
+using Stashbox.Infrastructure;
+using Stashbox.Resolution;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
-using Moq;
-using Stashbox.Entity;
-using Stashbox.Infrastructure;
 
 namespace Stashbox.Mocking.Moq
 {
@@ -20,7 +21,7 @@ namespace Stashbox.Mocking.Moq
             this.repository = repository;
         }
 
-        public override Expression GetExpression(IContainerContext containerContext, TypeInformation typeInfo, ResolutionInfo resolutionInfo)
+        public override Expression GetExpression(IContainerContext containerContext, TypeInformation typeInfo, ResolutionContext resolutionInfo)
         {
             var method = CreateMockMethod.MakeGenericMethod(typeInfo.Type);
             return Expression.Call(Expression.Constant(this), method);

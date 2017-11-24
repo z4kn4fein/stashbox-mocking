@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using Rhino.Mocks;
+﻿using Rhino.Mocks;
 using Stashbox.Entity;
 using Stashbox.Infrastructure;
+using Stashbox.Resolution;
+using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace Stashbox.Mocking.Rhino.Mocks
 {
@@ -13,7 +14,7 @@ namespace Stashbox.Mocking.Rhino.Mocks
             : base(requestedTypes)
         { }
 
-        public override Expression GetExpression(IContainerContext containerContext, TypeInformation typeInfo, ResolutionInfo resolutionInfo) =>
+        public override Expression GetExpression(IContainerContext containerContext, TypeInformation typeInfo, ResolutionContext resolutionInfo) =>
             Expression.Constant(MockRepository.GenerateStub(typeInfo.Type));
     }
 }

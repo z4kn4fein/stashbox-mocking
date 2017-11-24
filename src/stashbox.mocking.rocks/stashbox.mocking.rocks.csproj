@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net462;netcoreapp1.1</TargetFrameworks>
+        <TargetFramework>netstandard2.0</TargetFramework>
         <PackageTargetFallback>$(PackageTargetFallback);dotnet5.4;portable-net45+win8</PackageTargetFallback>
         <AssemblyName>Stashbox.Mocking.Rocks</AssemblyName>
         <RootNamespace>Stashbox.Mocking.Rocks</RootNamespace>
@@ -35,8 +35,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Rocks" Version="2.1.0" />
-        <PackageReference Include="Stashbox" Version="2.5.3" />
+        <PackageReference Include="Rocks" Version="3.1.0" />
+        <PackageReference Include="Stashbox" Version="2.5.5" />
     </ItemGroup>
 
 </Project>
