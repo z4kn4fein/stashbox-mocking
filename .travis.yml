@@ -24,9 +24,9 @@ before_script:
   - dotnet restore src/stashbox.mocking.sln
 
 script:
-  - if test "$TRAVIS_OS_NAME" != "osx"; dotnet test src/stashbox.mocking.fakeiteasy.tests/stashbox.mocking.fakeiteasy.tests.csproj -c Release -f netcoreapp1.1; fi
+  - if test "$TRAVIS_OS_NAME" != "osx"; then dotnet test src/stashbox.mocking.fakeiteasy.tests/stashbox.mocking.fakeiteasy.tests.csproj -c Release -f netcoreapp1.1; fi
   - dotnet test src/stashbox.mocking.fakeiteasy.tests/stashbox.mocking.fakeiteasy.tests.csproj -c Release -f netcoreapp2.0
-  - if test "$TRAVIS_OS_NAME" != "osx"; dotnet test src/stashbox.mocking.moq.tests/stashbox.mocking.moq.tests.csproj -c Release -f netcoreapp1.1; fi
+  - if test "$TRAVIS_OS_NAME" != "osx"; then dotnet test src/stashbox.mocking.moq.tests/stashbox.mocking.moq.tests.csproj -c Release -f netcoreapp1.1; fi
   - dotnet test src/stashbox.mocking.moq.tests/stashbox.mocking.moq.tests.csproj -c Release -f netcoreapp2.0
-  - if test "$TRAVIS_OS_NAME" != "osx"; dotnet test src/stashbox.mocking.nsubstitute.tests/stashbox.mocking.nsubstitute.tests.csproj -c Release -f netcoreapp1.1; fi
+  - if test "$TRAVIS_OS_NAME" != "osx"; then dotnet test src/stashbox.mocking.nsubstitute.tests/stashbox.mocking.nsubstitute.tests.csproj -c Release -f netcoreapp1.1; fi
 #  - dotnet test src/stashbox.mocking.rocks.tests/stashbox.mocking.rocks.tests.csproj -c Release -f netcoreapp1.1
