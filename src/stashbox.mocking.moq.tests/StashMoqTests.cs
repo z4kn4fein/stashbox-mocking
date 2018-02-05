@@ -30,7 +30,7 @@ namespace Stashbox.Mocking.Moq.Tests
             {
                 mock.Mock<IDep>().Setup(x => x.Test());
                 mock.Mock<IDep>().Setup(x => x.Test2());
-                mock.Mock<IDep2>().Setup(x => x.Test1()).Returns(null);
+                mock.Mock<IDep2>().Setup(x => x.Test1()).Returns(new object());
                 var m = mock.Get<TestObj>();
                 m.Test();
                 m.Test1();
@@ -43,7 +43,7 @@ namespace Stashbox.Mocking.Moq.Tests
             using (var mock = StashMoq.Create(MockBehavior.Strict))
             {
                 mock.Mock<IDep>(MockBehavior.Loose).Setup(x => x.Test());
-                mock.Mock<IDep2>().Setup(x => x.Test1()).Returns(null);
+                mock.Mock<IDep2>().Setup(x => x.Test1()).Returns(new object());
                 var m = mock.Get<TestObj>();
                 m.Test();
                 m.Test1();
