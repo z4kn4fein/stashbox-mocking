@@ -23,8 +23,8 @@ before_build:
 build_script:
 - nuget restore src\stashbox.mocking.sln
 - msbuild /t:Restore /p:Configuration=%CONFIGURATION% src\stashbox.mocking.sln
-- ps: . .\sign.ps1 "c:\Users\appveyor\.nuget\packages\rocks\2.1.0\lib\net462" "Rocks" ".\sn.snk"
-- ps: . .\sign.ps1 "c:\Users\appveyor\.nuget\packages\rocks\2.1.0\lib\netcoreapp1.1" "Rocks" ".\sn.snk"
+- ps: . .\sign.ps1 "c:\Users\appveyor\.nuget\packages\rocks\3.1.0\lib\net462" "Rocks" ".\sn.snk"
+- ps: . .\sign.ps1 "c:\Users\appveyor\.nuget\packages\rocks\3.1.0\lib\netcoreapp1.1" "Rocks" ".\sn.snk"
 - msbuild /t:Build /p:Configuration=%CONFIGURATION% src\stashbox.mocking.sln
   
 after_build:
