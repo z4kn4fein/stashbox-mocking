@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Stashbox.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Stashbox.Infrastructure;
-using Stashbox.Utils;
 
 namespace Stashbox.Mocking
 {

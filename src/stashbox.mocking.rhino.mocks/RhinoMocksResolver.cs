@@ -1,6 +1,5 @@
 ﻿using Rhino.Mocks;
 using Stashbox.Entity;
-using Stashbox.Infrastructure;
 using Stashbox.Resolution;
 using System;
 using System.Collections.Generic;
