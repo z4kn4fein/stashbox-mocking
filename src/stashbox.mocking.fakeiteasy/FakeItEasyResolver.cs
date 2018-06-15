@@ -13,7 +13,7 @@ namespace Stashbox.Mocking.FakeItEasy
             : base(requestedTypes)
         { }
 
-        public override Expression GetExpression(IContainerContext containerContext, TypeInformation typeInfo, ResolutionContext resolutionInfo) =>
+        protected override Expression GetExpressionInternal(IContainerContext containerContext, TypeInformation typeInfo, ResolutionContext resolutionInfo) =>
             Expression.Constant(Create.Dummy(typeInfo.Type));
     }
 }

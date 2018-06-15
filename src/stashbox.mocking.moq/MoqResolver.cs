@@ -20,7 +20,7 @@ namespace Stashbox.Mocking.Moq
             this.repository = repository;
         }
 
-        public override Expression GetExpression(IContainerContext containerContext, TypeInformation typeInfo, ResolutionContext resolutionInfo)
+        protected override Expression GetExpressionInternal(IContainerContext containerContext, TypeInformation typeInfo, ResolutionContext resolutionInfo)
         {
             var method = CreateMockMethod.MakeGenericMethod(typeInfo.Type);
             return Expression.Call(Expression.Constant(this), method);

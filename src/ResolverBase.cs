@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace Stashbox.Mocking
 {
-    internal class ResolverBase : Resolver
+    internal abstract class ResolverBase : IResolver
     {
         private readonly ISet<Type> requestedTypes;
 
@@ -16,12 +16,12 @@ namespace Stashbox.Mocking
             this.requestedTypes = requestedTypes;
         }
 
-        public override Expression GetExpression(IContainerContext containerContext, TypeInformation typeInfo, ResolutionContext resolutionInfo)
-        {
-            throw new NotImplementedException();
-        }
+        public Expression GetExpression(IContainerContext containerContext, TypeInformation typeInfo, ResolutionContext resolutionContext) => 
+            this.GetExpressionInternal(containerContext, typeInfo, resolutionContext);
 
-        public override bool CanUseForResolution(IContainerContext containerContext, TypeInformation typeInfo, ResolutionContext resolutionInfo) =>
+        public bool CanUseForResolution(IContainerContext containerContext, TypeInformation typeInfo, ResolutionContext resolutionContext) =>
             !this.requestedTypes.Contains(typeInfo.Type) && typeInfo.Type.CanMock();
+
+        protected abstract Expression GetExpressionInternal(IContainerContext containerContext, TypeInformation typeInfo, ResolutionContext resolutionContext);
     }
 }

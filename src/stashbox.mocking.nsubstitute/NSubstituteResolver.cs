@@ -13,7 +13,7 @@ namespace Stashbox.Mocking.NSubstitute
             : base(requestedTypes)
         { }
 
-        public override Expression GetExpression(IContainerContext containerContext, TypeInformation typeInfo, ResolutionContext resolutionInfo) =>
+        protected override Expression GetExpressionInternal(IContainerContext containerContext, TypeInformation typeInfo, ResolutionContext resolutionInfo) =>
             Expression.Constant(Substitute.For(new[] { typeInfo.Type }, new object[] { }));
     }
 }
