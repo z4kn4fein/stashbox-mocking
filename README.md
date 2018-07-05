@@ -6,7 +6,7 @@ Mocking framework integrations for Stashbox that provide automatic mock creation
 [![NuGet Version](https://buildstats.info/nuget/Stashbox.Moq)](https://www.nuget.org/packages/Stashbox.Moq/) | [![NuGet Version](https://buildstats.info/nuget/Stashbox.FakeItEasy)](https://www.nuget.org/packages/Stashbox.FakeItEasy/) | [![NuGet Version](https://buildstats.info/nuget/Stashbox.NSubstitute)](https://www.nuget.org/packages/Stashbox.NSubstitute/) | [![NuGet Version](https://buildstats.info/nuget/Stashbox.RhinoMocks)](https://www.nuget.org/packages/Stashbox.RhinoMocks/) | [![NuGet Version](https://buildstats.info/nuget/Stashbox.Rocks)](https://www.nuget.org/packages/Stashbox.Rocks/)
 
 ## Moq
-You can use the auto mock framework by creating a `StashMoq` instance wrapped in a using statement, on it's disposal it will call `Verify()` on all the configured expectations.
+You can use the auto mock framework by creating a `StashMoq` instance wrapped in a using statement, on its disposal it will call `Verify()` on all the configured expectations.
 ```c#
 //begin a test scope
 using (var stash = StashMoq.Create())
@@ -27,7 +27,7 @@ using (var stash = StashMoq.Create())
     //check the result
     Assert.Equal("test", result);
     
-} //StashMoq will call the Verify() method on all configured expectations on it's dispose
+} //StashMoq will call the Verify() method on all configured expectations on its dispose
 ```
 > You can also set the `verifyAll` parameter of `StashMoq` with that it will call the `VerifyAll()` on the used mock repository.
 `StashMoq.Create(verifyAll: true)`
@@ -110,7 +110,7 @@ using (var stash = StashSubstitute.Create())
 > You can also get a partial mock with the `stash.Partial<IDependency>()` call.
 
 ## RhinoMocks
-You can use the auto mock framework by creating a `StashRhino` instance wrapped in a using statement, on it's disposal it will call `VerifyAllExpectations()` on all the configured expectations.
+You can use the auto mock framework by creating a `StashRhino` instance wrapped in a using statement, on its disposal it will call `VerifyAllExpectations()` on all the configured expectations.
 ```c#
 //begin a test scope
 using (var stash = StashRhino.Create())
@@ -131,7 +131,7 @@ using (var stash = StashRhino.Create())
     //check the result
     Assert.Equal("test", result);   
     
-} //StashRhino will call the VerifyAllExpectations() method on all configured expectations on it's dispose
+} //StashRhino will call the VerifyAllExpectations() method on all configured expectations on its dispose
 ```
 
 ### Mock types
@@ -151,7 +151,7 @@ using (var stash = StashRhino.Create())
 ```
 
 ## Rocks
-You can use the auto mock framework by creating a `StashRocks` instance wrapped in a using statement, on it's disposal it will call `Verify()` on all the configured expectations.
+You can use the auto mock framework by creating a `StashRocks` instance wrapped in a using statement, on its disposal it will call `Verify()` on all the configured expectations.
 ```c#
 //begin a test scope
 using (var stash = StashRocks.Create())
@@ -171,7 +171,7 @@ using (var stash = StashRocks.Create())
     //check the result
     Assert.Equal("test", result);   
 
-} //StashRocks will call the Verify() method on all configured expectations on it's dispose
+} //StashRocks will call the Verify() method on all configured expectations on its dispose
 ```
 
 ## Further things that each package offers
@@ -186,6 +186,6 @@ var service = stash.GetWithConstructorArgs<Service>(StashArg.Any<IMock>(), mockO
 
 - All package allows the dependency override with pre-evaluated dependencies:
 ```c#
-//this will inject the `mockObject1` into the created `Service` everywhere it fits by it's type
+//this will inject the `mockObject1` into the created `Service` everywhere it fits by its type
 var service = stash.GetWithParamOverrides<Service>(mockObject1);
 ```
