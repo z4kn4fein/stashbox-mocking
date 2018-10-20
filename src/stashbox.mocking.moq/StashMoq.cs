@@ -30,7 +30,7 @@ namespace Stashbox.Mocking.Moq
         /// <param name="verifyAll">If true the disposal of this object will trigger a .VerifyAll() on the mock repository.</param>
         /// <returns>The <see cref="StashMoq"/> instance.</returns>
         public static StashMoq Create(MockBehavior behavior = MockBehavior.Default, bool verifyAll = false) =>
-            new StashMoq(new MockRepository(MockBehavior.Default), behavior, verifyAll);
+            new StashMoq(new MockRepository(behavior), behavior, verifyAll);
 
         /// <summary>
         /// Creates a mock object and registers it into the container.
