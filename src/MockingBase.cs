@@ -1,7 +1,7 @@
-﻿using Stashbox.Utils;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace Stashbox.Mocking
 {
@@ -10,7 +10,7 @@ namespace Stashbox.Mocking
     /// </summary>
     public class MockingBase : IDisposable
     {
-        private readonly AtomicBool disposed;
+        private int disposed;
 
         /// <summary>
         /// The used <see cref="IStashboxContainer"/> instance.
@@ -30,7 +30,6 @@ namespace Stashbox.Mocking
         {
             this.Container = container;
             this.RequestedTypes = new HashSet<Type>();
-            this.disposed = new AtomicBool();
         }
 
         /// <summary>
@@ -56,7 +55,7 @@ namespace Stashbox.Mocking
                     arguments[i] = arg;
             }
 
-            this.Container.RegisterType<TService>(context => context.WithConstructorByArguments(arguments));
+            this.Container.Register<TService>(context => context.WithConstructorByArguments(arguments));
             return this.Container.Resolve<TService>();
         }
 
@@ -161,7 +160,7 @@ namespace Stashbox.Mocking
         /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposed.CompareExchange(false, true) || !disposing) return;
+            if (Interlocked.CompareExchange(ref this.disposed, 1, 0) != 0 || !disposing) return;
             this.Container.Dispose();
         }
 

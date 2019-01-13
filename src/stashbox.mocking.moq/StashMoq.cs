@@ -1,5 +1,5 @@
-﻿using Moq;
-using Stashbox.Utils;
+﻿using System.Threading;
+using Moq;
 
 namespace Stashbox.Mocking.Moq
 {
@@ -11,7 +11,7 @@ namespace Stashbox.Mocking.Moq
         private readonly MockRepository repository;
         private readonly MockBehavior behavior;
         private readonly bool verifyAll;
-        private readonly AtomicBool disposed;
+        private int disposed;
 
         private StashMoq(MockRepository repository, MockBehavior behavior, bool verifyAll)
             : base(new StashboxContainer(config => config.WithUnknownTypeResolution()))
@@ -19,7 +19,6 @@ namespace Stashbox.Mocking.Moq
             this.repository = repository;
             this.behavior = behavior;
             this.verifyAll = verifyAll;
-            this.disposed = new AtomicBool();
             base.Container.RegisterResolver(new MoqResolver(this.repository, base.RequestedTypes));
         }
 
@@ -59,7 +58,7 @@ namespace Stashbox.Mocking.Moq
         /// <inheritdoc />
         protected override void Dispose(bool disposing)
         {
-            if (!this.disposed.CompareExchange(false, true) || !disposing) return;
+            if (Interlocked.CompareExchange(ref this.disposed, 1, 0) != 0 || !disposing) return;
 
             try
             {
