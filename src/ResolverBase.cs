@@ -11,12 +11,12 @@ namespace Stashbox.Mocking
     {
         private readonly ISet<Type> requestedTypes;
 
-        public ResolverBase(ISet<Type> requestedTypes)
+        protected ResolverBase(ISet<Type> requestedTypes)
         {
             this.requestedTypes = requestedTypes;
         }
 
-        public Expression GetExpression(IContainerContext containerContext, TypeInformation typeInfo, ResolutionContext resolutionContext) => 
+        public Expression GetExpression(IContainerContext containerContext, IResolutionStrategy resolutionStrategy, TypeInformation typeInfo, ResolutionContext resolutionContext) => 
             this.GetExpressionInternal(containerContext, typeInfo, resolutionContext);
 
         public bool CanUseForResolution(IContainerContext containerContext, TypeInformation typeInfo, ResolutionContext resolutionContext) =>

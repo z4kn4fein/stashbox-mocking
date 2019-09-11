@@ -34,8 +34,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NSubstitute" Version="4.2.0" />
-    <PackageReference Include="Stashbox" Version="2.7.5" />
+    <PackageReference Include="NSubstitute" Version="4.2.1" />
+    <PackageReference Include="Stashbox" Version="2.8.1" />
   </ItemGroup>
 
 </Project>
