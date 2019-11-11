@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
         <AssemblyName>Stashbox.Mocking.Rocks</AssemblyName>
         <RootNamespace>Stashbox.Mocking.Rocks</RootNamespace>
         <AssemblyTitle>Stashbox.Mocking.Rocks</AssemblyTitle>
@@ -33,8 +33,15 @@
       <Compile Include="..\TypeExtensions.cs" Link="TypeExtensions.cs" />
     </ItemGroup>
 
+    <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+      <PackageReference Include="Rocks" Version="3.1.0" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
+      <PackageReference Include="Rocks" Version="4.0.0" />
+    </ItemGroup>
+  
     <ItemGroup>
-        <PackageReference Include="Rocks" Version="3.1.0" />
         <PackageReference Include="Stashbox" Version="2.8.5" />
     </ItemGroup>
 
