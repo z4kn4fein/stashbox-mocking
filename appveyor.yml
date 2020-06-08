@@ -13,14 +13,14 @@ image: Visual Studio 2019
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
-  assembly_version: '{version}'
-  assembly_file_version: '{version}'
-  assembly_informational_version: '{version}'
+  assembly_version: '$($env:build_version)'
+  assembly_file_version: '$($env:build_version)'
+  assembly_informational_version: '$($env:build_version)'
 
 before_build:
-- ps: . .\patch-version.ps1 src\stashbox.mocking.fakeiteasy\stashbox.mocking.fakeiteasy.csproj $env:appveyor_build_version
-- ps: . .\patch-version.ps1 src\stashbox.mocking.moq\stashbox.mocking.moq.csproj $env:appveyor_build_version
-- ps: . .\patch-version.ps1 src\stashbox.mocking.nsubstitute\stashbox.mocking.nsubstitute.csproj $env:appveyor_build_version
+- ps: . .\patch-version.ps1 src\stashbox.mocking.fakeiteasy\stashbox.mocking.fakeiteasy.csproj $($env:build_version)
+- ps: . .\patch-version.ps1 src\stashbox.mocking.moq\stashbox.mocking.moq.csproj $($env:build_version)
+- ps: . .\patch-version.ps1 src\stashbox.mocking.nsubstitute\stashbox.mocking.nsubstitute.csproj $($env:build_version)
 
 build_script:
 - nuget restore src\stashbox.mocking.sln
@@ -28,9 +28,9 @@ build_script:
 - msbuild /t:Build /p:Configuration=%CONFIGURATION% src\stashbox.mocking.sln
   
 after_build:
-- msbuild /t:Pack /p:IncludeSymbols=true /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.fakeiteasy\stashbox.mocking.fakeiteasy.csproj
-- msbuild /t:Pack /p:IncludeSymbols=true /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.moq\stashbox.mocking.moq.csproj
-- msbuild /t:Pack /p:IncludeSymbols=true /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.nsubstitute\stashbox.mocking.nsubstitute.csproj
+- msbuild /t:Pack /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.fakeiteasy\stashbox.mocking.fakeiteasy.csproj
+- msbuild /t:Pack /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.moq\stashbox.mocking.moq.csproj
+- msbuild /t:Pack /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.nsubstitute\stashbox.mocking.nsubstitute.csproj
 - nuget pack src\stashbox.mocking.rhino.mocks\stashbox.mocking.rhino.mocks.csproj -Symbols -OutputDirectory %APPVEYOR_BUILD_FOLDER%\artifacts
 
 test_script:
