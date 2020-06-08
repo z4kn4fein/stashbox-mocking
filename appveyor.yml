@@ -13,9 +13,9 @@ image: Visual Studio 2019
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
-  assembly_version: '$($env:build_version)'
-  assembly_file_version: '$($env:build_version)'
-  assembly_informational_version: '$($env:build_version)'
+  assembly_version: $(build_version)
+  assembly_file_version: $(build_version)
+  assembly_informational_version: $(build_version)
 
 before_build:
 - ps: . .\patch-version.ps1 src\stashbox.mocking.fakeiteasy\stashbox.mocking.fakeiteasy.csproj $($env:build_version)
