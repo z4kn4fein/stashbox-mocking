@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Rocks;
+using Rocks.Options;
+using System;
 using System.Collections.Concurrent;
 using System.Reflection;
-using Rocks;
-using Rocks.Options;
 
 namespace Stashbox.Mocking.Rocks
 {
@@ -63,7 +63,7 @@ namespace Stashbox.Mocking.Rocks
             options = options ?? this.globalOptions;
 
             var mock = options == null ? Rock.Make<TService>() : Rock.Make<TService>(options);
-            base.Container.RegisterInstanceAs(mock);
+            base.Container.RegisterInstance(mock);
             return mock;
         }
 
@@ -79,10 +79,7 @@ namespace Stashbox.Mocking.Rocks
             }
         }
 
-        private void RegisterRock<TService>(IRock<TService> rock) where TService : class
-        {
-            var maked = rock.Make();
-            base.Container.RegisterInstanceAs(maked, finalizerDelegate: m => rock.Verify());
-        }
+        private void RegisterRock<TService>(IRock<TService> rock) where TService : class =>
+            base.Container.RegisterInstance(rock.Make(), finalizerDelegate: m => rock.Verify());
     }
 }

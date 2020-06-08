@@ -47,7 +47,7 @@ namespace Stashbox.Mocking.Moq
                 var mock = args.Length > 0 ? this.repository.Create<TService>(mBehavior, args) :
                     this.repository.Create<TService>(mBehavior);
 
-                base.Container.RegisterInstanceAs(mock.Object);
+                base.Container.RegisterInstance(mock.Object);
                 return mock;
             }
 

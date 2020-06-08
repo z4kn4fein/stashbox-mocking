@@ -33,7 +33,7 @@ namespace Stashbox.Mocking.Rhino.Mocks
 
 
             var mock = MockRepository.GenerateMock<TService>(args);
-            base.Container.RegisterInstanceAs(mock, finalizerDelegate: m => m.VerifyAllExpectations());
+            base.Container.RegisterInstance(mock, finalizerDelegate: m => m.VerifyAllExpectations());
             return mock;
         }
 
@@ -50,7 +50,7 @@ namespace Stashbox.Mocking.Rhino.Mocks
 
 
             var mock = MockRepository.GenerateStrictMock<TService>(args);
-            base.Container.RegisterInstanceAs(mock, finalizerDelegate: m => m.VerifyAllExpectations());
+            base.Container.RegisterInstance(mock, finalizerDelegate: m => m.VerifyAllExpectations());
             return mock;
         }
 
@@ -67,7 +67,7 @@ namespace Stashbox.Mocking.Rhino.Mocks
 
 
             var mock = MockRepository.GeneratePartialMock<TService>(args);
-            base.Container.RegisterInstanceAs(mock, finalizerDelegate: m => m.VerifyAllExpectations());
+            base.Container.RegisterInstance(mock, finalizerDelegate: m => m.VerifyAllExpectations());
             return mock;
         }
 
@@ -84,7 +84,7 @@ namespace Stashbox.Mocking.Rhino.Mocks
 
 
             var mock = MockRepository.GenerateStub<TService>(args);
-            base.Container.RegisterInstanceAs(mock);
+            base.Container.RegisterInstance(mock);
             return mock;
         }
     }

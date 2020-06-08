@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.0</TargetFramework>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
         <AssemblyName>Stashbox.Mocking.Rocks.Tests</AssemblyName>
         <RootNamespace>Stashbox.Mocking.Rocks.Tests</RootNamespace>
         <SignAssembly>true</SignAssembly>
@@ -15,7 +15,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.2" />
-        <PackageReference Include="Rocks" Version="3.1.0" />
+        <PackageReference Include="Rocks" Version="4.1.1" />
         <PackageReference Include="xunit" Version="2.3.1" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
     </ItemGroup>

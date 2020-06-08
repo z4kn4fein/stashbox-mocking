@@ -1,7 +1,7 @@
-using System;
 using Rocks;
 using Rocks.Exceptions;
 using Stashbox.Mocking.Tests;
+using System;
 using Xunit;
 
 namespace Stashbox.Mocking.Rocks.Tests
@@ -55,7 +55,7 @@ namespace Stashbox.Mocking.Rocks.Tests
 
                 var m = mock.Get<TestObj>();
                 m.Test();
-                Assert.Throws<NotImplementedException>(() => m.Test1());
+                Assert.Throws<ExpectationException>(() => m.Test1());
             }
         }
 

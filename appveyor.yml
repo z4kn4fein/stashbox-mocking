@@ -1,4 +1,4 @@
-version: 2.1.{build}
+version: 2.2.{build}
 
 pull_requests:
   do_not_increment_build_number: true
@@ -45,8 +45,10 @@ test_script:
 - dotnet test src\stashbox.mocking.rocks.tests\stashbox.mocking.rocks.tests.csproj -c %CONFIGURATION% -f netcoreapp2.0 --no-build
   
 artifacts:
-- path: artifacts\Stashbox.*.nupkg
-  name: NuGet
+  - path: artifacts\Stashbox.*.nupkg
+    name: NuGet Packages
+  - path: artifacts\Stashbox.*.snupkg
+    name: NuGet Symbol Packages
 
 notifications:
 - provider: Email

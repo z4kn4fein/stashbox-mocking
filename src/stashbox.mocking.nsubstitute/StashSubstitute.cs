@@ -1,6 +1,6 @@
-﻿using System;
-using NSubstitute;
+﻿using NSubstitute;
 using Stashbox.Utils;
+using System;
 
 namespace Stashbox.Mocking.NSubstitute
 {
@@ -33,7 +33,7 @@ namespace Stashbox.Mocking.NSubstitute
             {
                 var mock = Substitute.ForPartsOf<TService>(args);
 
-                base.Container.RegisterInstanceAs(mock);
+                base.Container.RegisterInstance(mock);
                 return mock;
             }
 
@@ -52,7 +52,7 @@ namespace Stashbox.Mocking.NSubstitute
             {
                 var mock = Substitute.For<TService>(args);
 
-                base.Container.RegisterInstanceAs(mock);
+                base.Container.RegisterInstance(mock);
                 return mock;
             }
 
@@ -74,7 +74,7 @@ namespace Stashbox.Mocking.NSubstitute
             {
                 var mock = Substitute.For<TService1, TService2>(args);
 
-                base.Container.RegisterInstanceAs(mock);
+                base.Container.RegisterInstance(mock);
                 return mock;
             }
 
@@ -98,7 +98,7 @@ namespace Stashbox.Mocking.NSubstitute
             {
                 var mock = Substitute.For<TService1, TService2, TService3>(args);
 
-                base.Container.RegisterInstanceAs(mock);
+                base.Container.RegisterInstance(mock);
                 return mock;
             }
 

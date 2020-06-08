@@ -40,7 +40,7 @@ namespace Stashbox.Mocking.FakeItEasy
             optionsBuilder = optionsBuilder ?? this.globalOptions;
 
             var fake = optionsBuilder == null ? A.Fake<TService>() : (TService)global::FakeItEasy.Sdk.Create.Fake(typeof(TService), optionsBuilder);
-            base.Container.RegisterInstanceAs(fake);
+            base.Container.RegisterInstance(fake);
             return fake;
         }
     }

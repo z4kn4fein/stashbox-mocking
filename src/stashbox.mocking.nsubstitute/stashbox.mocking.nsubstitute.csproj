@@ -9,10 +9,10 @@
     <Authors>Peter Csajtai</Authors>
     <Company>Peter Csajtai</Company>
     <Product>Stashbox.NSubstitute</Product>
-    <Copyright>Copyright © Peter Csajtai 2017</Copyright>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/z4kn4fein/stashbox-mocking/master/LICENSE</PackageLicenseUrl>
+    <Copyright>Copyright © Peter Csajtai 2020</Copyright>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/z4kn4fein/stashbox-mocking</PackageProjectUrl>
-    <PackageIconUrl>https://goo.gl/I3hRfL</PackageIconUrl>
+    <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/z4kn4fein/stashbox-mocking</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Stashbox NSubstitute mock unit test mocking</PackageTags>
@@ -35,7 +35,12 @@
 
   <ItemGroup>
     <PackageReference Include="NSubstitute" Version="4.2.1" />
-    <PackageReference Include="Stashbox" Version="2.8.3" />
+    <PackageReference Include="Stashbox" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="" />
+    <None Include="..\..\img\icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,4 @@
-﻿using Stashbox.Entity;
-using Stashbox.Resolution;
+﻿using Stashbox.Resolution;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -16,12 +15,12 @@ namespace Stashbox.Mocking
             this.requestedTypes = requestedTypes;
         }
 
-        public Expression GetExpression(IContainerContext containerContext, IResolutionStrategy resolutionStrategy, TypeInformation typeInfo, ResolutionContext resolutionContext) => 
-            this.GetExpressionInternal(containerContext, typeInfo, resolutionContext);
+        public Expression GetExpression(IResolutionStrategy resolutionStrategy, TypeInformation typeInfo, ResolutionContext resolutionContext) =>
+            this.GetExpressionInternal(typeInfo, resolutionContext);
 
-        public bool CanUseForResolution(IContainerContext containerContext, TypeInformation typeInfo, ResolutionContext resolutionContext) =>
+        public bool CanUseForResolution(TypeInformation typeInfo, ResolutionContext resolutionContext) =>
             !this.requestedTypes.Contains(typeInfo.Type) && typeInfo.Type.CanMock();
 
-        protected abstract Expression GetExpressionInternal(IContainerContext containerContext, TypeInformation typeInfo, ResolutionContext resolutionContext);
+        protected abstract Expression GetExpressionInternal(TypeInformation typeInfo, ResolutionContext resolutionContext);
     }
 }

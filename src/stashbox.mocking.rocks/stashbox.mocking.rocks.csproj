@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
         <AssemblyName>Stashbox.Mocking.Rocks</AssemblyName>
         <RootNamespace>Stashbox.Mocking.Rocks</RootNamespace>
         <AssemblyTitle>Stashbox.Mocking.Rocks</AssemblyTitle>
@@ -9,10 +9,10 @@
         <Authors>Peter Csajtai</Authors>
         <Company>Peter Csajtai</Company>
         <Product>Stashbox.Rocks</Product>
-        <Copyright>Copyright © Peter Csajtai 2017</Copyright>
-        <PackageLicenseUrl>https://raw.githubusercontent.com/z4kn4fein/stashbox-mocking/master/LICENSE</PackageLicenseUrl>
+        <Copyright>Copyright © Peter Csajtai 2020</Copyright>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageProjectUrl>https://github.com/z4kn4fein/stashbox-mocking</PackageProjectUrl>
-        <PackageIconUrl>https://goo.gl/I3hRfL</PackageIconUrl>
+        <PackageIcon>icon.png</PackageIcon>
         <RepositoryUrl>https://github.com/z4kn4fein/stashbox-mocking</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>Stashbox Rocks mock unit test mocking</PackageTags>
@@ -34,8 +34,12 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Rocks" Version="3.1.0" />
-        <PackageReference Include="Stashbox" Version="2.8.3" />
+        <PackageReference Include="Rocks" Version="4.1.1" />
+        <PackageReference Include="Stashbox" Version="3.1.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Include="..\..\LICENSE" Pack="true" PackagePath="" />
+      <None Include="..\..\img\icon.png" Pack="true" PackagePath="" />
+    </ItemGroup>
 </Project>
