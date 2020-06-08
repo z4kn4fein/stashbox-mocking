@@ -8,10 +8,14 @@
         <owners>$author$</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>$description$</description>
-        <iconUrl>https://goo.gl/I3hRfL</iconUrl>
-        <copyright>Copyright © Peter Csajtai 2020</copyright>
+        <icon>icon.png</icon>
+        <copyright>$copyright$</copyright>
         <projectUrl>https://github.com/z4kn4fein/stashbox-mocking</projectUrl>
-        <licenseUrl>https://raw.githubusercontent.com/z4kn4fein/stashbox-mocking/master/LICENSE</licenseUrl>
+        <license type="file">LICENSE</license>
         <tags>Stashbox RhinoMocks mock unit test mocking</tags>
     </metadata>
+    <files>
+        <file src="..\..\img\icon.png" target="" />
+        <file src="..\..\LICENSE" target="LICENSE" />
+    </files>
 </package>
