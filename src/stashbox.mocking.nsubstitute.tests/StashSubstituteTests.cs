@@ -1,7 +1,7 @@
-using System;
 using NSubstitute;
 using NSubstitute.Exceptions;
 using Stashbox.Mocking.Tests;
+using System;
 using Xunit;
 
 namespace Stashbox.Mocking.NSubstitute.Tests
