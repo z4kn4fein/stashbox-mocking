@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26403.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "stashbox.mocking.moq", "stashbox.mocking.moq\stashbox.mocking.moq.csproj", "{E400BA4B-0DA1-4EF8-BCFF-50D4BA54B5F0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "stashbox.mocking.fakeiteasy", "stashbox.mocking.fakeiteasy\stashbox.mocking.fakeiteasy.csproj", "{66D13652-719E-435A-8607-A4E01A6757A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "stashbox.mocking.fakeiteasy.tests", "stashbox.mocking.fakeiteasy.tests\stashbox.mocking.fakeiteasy.tests.csproj", "{3A355404-27F2-4D48-A55E-3088FB7FD800}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "stashbox.mocking.fakeiteasy.tests", "stashbox.mocking.fakeiteasy.tests\stashbox.mocking.fakeiteasy.tests.csproj", "{3A355404-27F2-4D48-A55E-3088FB7FD800}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "stashbox.mocking.moq.tests", "stashbox.mocking.moq.tests\stashbox.mocking.moq.tests.csproj", "{8EF5EFA4-ACEF-4DDA-A5B4-DBA761438876}"
 EndProject
@@ -17,11 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "stashbox.mocking.rhino.mock
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "stashbox.mocking.nsubstitute", "stashbox.mocking.nsubstitute\stashbox.mocking.nsubstitute.csproj", "{4D93BC90-A7A2-4C78-B7CF-5C310F2DE6D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "stashbox.mocking.nsubstitute.tests", "stashbox.mocking.nsubstitute.tests\stashbox.mocking.nsubstitute.tests.csproj", "{B2DB0B4C-75F1-4F4E-9677-E5197C2A2988}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "stashbox.mocking.rocks", "stashbox.mocking.rocks\stashbox.mocking.rocks.csproj", "{895BAE2C-A1F5-4915-B798-B993A06A180A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "stashbox.mocking.rocks.tests", "stashbox.mocking.rocks.tests\stashbox.mocking.rocks.tests.csproj", "{B5C52892-AFA2-4D1E-A235-94FA611D959E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "stashbox.mocking.nsubstitute.tests", "stashbox.mocking.nsubstitute.tests\stashbox.mocking.nsubstitute.tests.csproj", "{B2DB0B4C-75F1-4F4E-9677-E5197C2A2988}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,16 +57,11 @@ Global
 		{B2DB0B4C-75F1-4F4E-9677-E5197C2A2988}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2DB0B4C-75F1-4F4E-9677-E5197C2A2988}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2DB0B4C-75F1-4F4E-9677-E5197C2A2988}.Release|Any CPU.Build.0 = Release|Any CPU
-		{895BAE2C-A1F5-4915-B798-B993A06A180A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{895BAE2C-A1F5-4915-B798-B993A06A180A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{895BAE2C-A1F5-4915-B798-B993A06A180A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{895BAE2C-A1F5-4915-B798-B993A06A180A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B5C52892-AFA2-4D1E-A235-94FA611D959E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B5C52892-AFA2-4D1E-A235-94FA611D959E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B5C52892-AFA2-4D1E-A235-94FA611D959E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B5C52892-AFA2-4D1E-A235-94FA611D959E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D1B71177-6B2A-47E0-B0AB-06183B168B82}
 	EndGlobalSection
 EndGlobal

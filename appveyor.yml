@@ -21,19 +21,16 @@ before_build:
 - ps: . .\patch-version.ps1 src\stashbox.mocking.fakeiteasy\stashbox.mocking.fakeiteasy.csproj $env:appveyor_build_version
 - ps: . .\patch-version.ps1 src\stashbox.mocking.moq\stashbox.mocking.moq.csproj $env:appveyor_build_version
 - ps: . .\patch-version.ps1 src\stashbox.mocking.nsubstitute\stashbox.mocking.nsubstitute.csproj $env:appveyor_build_version
-- ps: . .\patch-version.ps1 src\stashbox.mocking.rocks\stashbox.mocking.rocks.csproj $env:appveyor_build_version
 
 build_script:
 - nuget restore src\stashbox.mocking.sln
 - msbuild /t:Restore /p:Configuration=%CONFIGURATION% src\stashbox.mocking.sln
-- ps: . .\sign.ps1 "c:\Users\appveyor\.nuget\packages\rocks\4.1.1\lib\netstandard2.1" "Rocks" ".\sn.snk"
 - msbuild /t:Build /p:Configuration=%CONFIGURATION% src\stashbox.mocking.sln
   
 after_build:
 - msbuild /t:Pack /p:IncludeSymbols=true /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.fakeiteasy\stashbox.mocking.fakeiteasy.csproj
 - msbuild /t:Pack /p:IncludeSymbols=true /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.moq\stashbox.mocking.moq.csproj
 - msbuild /t:Pack /p:IncludeSymbols=true /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.nsubstitute\stashbox.mocking.nsubstitute.csproj
-- msbuild /t:Pack /p:IncludeSymbols=true /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.rocks\stashbox.mocking.rocks.csproj
 - nuget pack src\stashbox.mocking.rhino.mocks\stashbox.mocking.rhino.mocks.csproj -Symbols -OutputDirectory %APPVEYOR_BUILD_FOLDER%\artifacts
 
 test_script:
@@ -45,7 +42,6 @@ test_script:
 - dotnet test src\stashbox.mocking.moq.tests\stashbox.mocking.moq.tests.csproj -c %CONFIGURATION% -f netcoreapp2.0 --no-build
 - dotnet test src\stashbox.mocking.nsubstitute.tests\stashbox.mocking.nsubstitute.tests.csproj -c %CONFIGURATION% -f net452 --no-build
 - dotnet test src\stashbox.mocking.nsubstitute.tests\stashbox.mocking.nsubstitute.tests.csproj -c %CONFIGURATION% -f netcoreapp1.1 --no-build
-- dotnet test src\stashbox.mocking.rocks.tests\stashbox.mocking.rocks.tests.csproj -c %CONFIGURATION% -f netcoreapp3.1 --no-build
   
 artifacts:
   - path: artifacts\Stashbox.*.nupkg
