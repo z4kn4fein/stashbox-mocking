@@ -1,9 +1,10 @@
-# stashbox-mocking [![Appveyor build status](https://img.shields.io/appveyor/ci/pcsajtai/stashbox-mocking/master.svg?label=appveyor)](https://ci.appveyor.com/project/pcsajtai/stashbox-mocking/branch/master) [![Travis CI build status](https://img.shields.io/travis/z4kn4fein/stashbox-mocking/master.svg?label=travis-ci)](https://travis-ci.org/z4kn4fein/stashbox-mocking)
+# stashbox-mocking 
+[![Appveyor build status](https://img.shields.io/appveyor/ci/pcsajtai/stashbox-mocking/master.svg?label=appveyor)](https://ci.appveyor.com/project/pcsajtai/stashbox-mocking/branch/master) [![Travis CI build status](https://img.shields.io/travis/z4kn4fein/stashbox-mocking/master.svg?label=travis-ci)](https://travis-ci.org/z4kn4fein/stashbox-mocking) [![Sourcelink](https://img.shields.io/badge/sourcelink-enabled-brightgreen.svg)](https://github.com/dotnet/sourcelink)
 Mocking framework integrations for Stashbox that provide automatic mock creation for your services in unit tests.
 
-[Moq](https://github.com/moq/moq4) | [FakeItEasy](https://github.com/FakeItEasy/FakeItEasy) | [NSubstitute](https://github.com/nsubstitute/NSubstitute) | [RhinoMocks](https://github.com/hibernating-rhinos/rhino-mocks) | [Rocks](https://github.com/JasonBock/Rocks)
+[Moq](https://github.com/moq/moq4) | [FakeItEasy](https://github.com/FakeItEasy/FakeItEasy) | [NSubstitute](https://github.com/nsubstitute/NSubstitute) | [RhinoMocks](https://github.com/hibernating-rhinos/rhino-mocks)
 --- | --- | --- | --- | ---
-[![NuGet Version](https://buildstats.info/nuget/Stashbox.Moq)](https://www.nuget.org/packages/Stashbox.Moq/) | [![NuGet Version](https://buildstats.info/nuget/Stashbox.FakeItEasy)](https://www.nuget.org/packages/Stashbox.FakeItEasy/) | [![NuGet Version](https://buildstats.info/nuget/Stashbox.NSubstitute)](https://www.nuget.org/packages/Stashbox.NSubstitute/) | [![NuGet Version](https://buildstats.info/nuget/Stashbox.RhinoMocks)](https://www.nuget.org/packages/Stashbox.RhinoMocks/) | [![NuGet Version](https://buildstats.info/nuget/Stashbox.Rocks)](https://www.nuget.org/packages/Stashbox.Rocks/)
+[![NuGet Version](https://buildstats.info/nuget/Stashbox.Moq)](https://www.nuget.org/packages/Stashbox.Moq/) | [![NuGet Version](https://buildstats.info/nuget/Stashbox.FakeItEasy)](https://www.nuget.org/packages/Stashbox.FakeItEasy/) | [![NuGet Version](https://buildstats.info/nuget/Stashbox.NSubstitute)](https://www.nuget.org/packages/Stashbox.NSubstitute/) | [![NuGet Version](https://buildstats.info/nuget/Stashbox.RhinoMocks)](https://www.nuget.org/packages/Stashbox.RhinoMocks/)
 
 ## Moq
 You can use the auto mock framework by creating a `StashMoq` instance wrapped in a using statement, on its disposal it will call `Verify()` on all the configured expectations.
