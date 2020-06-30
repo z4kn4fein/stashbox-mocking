@@ -3,7 +3,7 @@
 Mocking framework integrations for Stashbox that provide automatic mock creation for your services in unit tests.
 
 [Moq](https://github.com/moq/moq4) | [FakeItEasy](https://github.com/FakeItEasy/FakeItEasy) | [NSubstitute](https://github.com/nsubstitute/NSubstitute) | [RhinoMocks](https://github.com/hibernating-rhinos/rhino-mocks)
---- | --- | --- | --- | ---
+--- | --- | --- | ---
 [![NuGet Version](https://buildstats.info/nuget/Stashbox.Moq)](https://www.nuget.org/packages/Stashbox.Moq/) | [![NuGet Version](https://buildstats.info/nuget/Stashbox.FakeItEasy)](https://www.nuget.org/packages/Stashbox.FakeItEasy/) | [![NuGet Version](https://buildstats.info/nuget/Stashbox.NSubstitute)](https://www.nuget.org/packages/Stashbox.NSubstitute/) | [![NuGet Version](https://buildstats.info/nuget/Stashbox.RhinoMocks)](https://www.nuget.org/packages/Stashbox.RhinoMocks/)
 
 ## Moq
