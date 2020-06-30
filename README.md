@@ -152,30 +152,6 @@ using (var stash = StashRhino.Create())
 }
 ```
 
-## Rocks
-You can use the auto mock framework by creating a `StashRocks` instance wrapped in a using statement, on its disposal it will call `Verify()` on all the configured expectations.
-```c#
-//begin a test scope
-using (var stash = StashRocks.Create())
-{
-    //configure a mock dependency
-    stash.Mock<IDependency>().Handle(x => x.Test()).Returns("test");
-    
-    //generate all mock objects and register them into the StashboxContainer
-    stash.MakeAll();
-    
-    //get the tested service filled with auto created mocks (except the configured ones)
-    var service = stash.Get<IService>();
-    
-    //call the tested method, imagine that this will invoke the Test() method of an IDependency
-    var result = service.Test();
-    
-    //check the result
-    Assert.Equal("test", result);   
-
-} //StashRocks will call the Verify() method on all configured expectations on its dispose
-```
-
 ## Further things that each package offers
 - All package allows the service instantiation by a selected constructor with pre-evaluated arguments:
 ```c#
