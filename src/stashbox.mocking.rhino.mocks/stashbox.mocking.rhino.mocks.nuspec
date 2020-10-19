@@ -11,11 +11,10 @@
         <icon>icon.png</icon>
         <copyright>$copyright$</copyright>
         <projectUrl>https://github.com/z4kn4fein/stashbox-mocking</projectUrl>
-        <license type="file">LICENSE</license>
+        <license type="expression">MIT</license>
         <tags>Stashbox RhinoMocks mock unit test mocking</tags>
     </metadata>
     <files>
         <file src="..\..\img\icon.png" target="" />
-        <file src="..\..\LICENSE" target="LICENSE" />
     </files>
 </package>

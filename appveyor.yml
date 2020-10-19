@@ -1,5 +1,5 @@
 environment:
-  build_version: 2.3.3
+  build_version: 2.3.4
 
 version: $(build_version)-{build}
 
@@ -31,7 +31,7 @@ after_build:
 - msbuild /t:Pack /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.fakeiteasy\stashbox.mocking.fakeiteasy.csproj
 - msbuild /t:Pack /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.moq\stashbox.mocking.moq.csproj
 - msbuild /t:Pack /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.nsubstitute\stashbox.mocking.nsubstitute.csproj
-- nuget pack src\stashbox.mocking.rhino.mocks\stashbox.mocking.rhino.mocks.csproj -Symbols -SymbolPackageFormat snupkg -OutputDirectory %APPVEYOR_BUILD_FOLDER%\artifacts
+- nuget pack src\stashbox.mocking.rhino.mocks\stashbox.mocking.rhino.mocks.csproj -Symbols -OutputDirectory %APPVEYOR_BUILD_FOLDER%\artifacts
 
 test_script:
 - dotnet test src\stashbox.mocking.fakeiteasy.tests\stashbox.mocking.fakeiteasy.tests.csproj -c %CONFIGURATION% -f net452 --no-build
