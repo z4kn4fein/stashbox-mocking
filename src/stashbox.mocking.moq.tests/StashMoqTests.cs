@@ -173,5 +173,20 @@ namespace Stashbox.Mocking.Moq.Tests
                 Assert.Same(arg, m.Object.Dep);
             }
         }
+
+        [Fact]
+        public void StashMoqTests_Mock_Only_If_Exists()
+        {
+            using (var mock = StashMoq.Create())
+            {
+                Assert.Null(mock.Mock<ITest>(onlyIfAlreadyExists: true));
+
+                mock.Container.Register<ITest, TestObj>();
+
+                var r = mock.Mock<ITest>(onlyIfAlreadyExists: true);
+                Assert.NotNull(r);                
+                Assert.IsNotType<TestObj>(r);
+            }
+        }
     }
 }

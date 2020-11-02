@@ -162,9 +162,24 @@ namespace Stashbox.Mocking.Rhino.Mocks.Tests
             using (var mock = StashRhino.Create())
             {
                 var arg = new DepArg();
-                var m = mock.Mock<DepWithArg>(arg);
+                var m = mock.Mock<DepWithArg>(args: arg);
 
                 Assert.Same(arg, m.Dep);
+            }
+        }
+
+        [Fact]
+        public void StashRhinoTest_Mock_Only_If_Exists()
+        {
+            using (var mock = StashRhino.Create())
+            {
+                Assert.Null(mock.Mock<ITest>(onlyIfAlreadyExists: true));
+
+                mock.Container.Register<ITest, TestObj>();
+
+                var r = mock.Mock<ITest>(onlyIfAlreadyExists: true);
+                Assert.NotNull(r);
+                Assert.IsNotType<TestObj>(r);
             }
         }
     }

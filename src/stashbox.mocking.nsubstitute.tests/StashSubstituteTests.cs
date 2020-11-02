@@ -129,7 +129,7 @@ namespace Stashbox.Mocking.NSubstitute.Tests
             using (var mock = StashSubstitute.Create())
             {
                 var arg = new DepArg();
-                var m = mock.Sub<DepWithArg>(arg);
+                var m = mock.Sub<DepWithArg>(args: arg);
 
                 Assert.Same(arg, m.Dep);
             }
@@ -152,9 +152,24 @@ namespace Stashbox.Mocking.NSubstitute.Tests
             using (var mock = StashSubstitute.Create())
             {
                 var arg = new DepArg();
-                var m = mock.Sub(new[] { typeof(DepWithArg) }, arg);
+                var m = mock.Sub(new[] { typeof(DepWithArg) }, args: arg);
 
                 Assert.Same(arg, ((DepWithArg)m).Dep);
+            }
+        }
+
+        [Fact]
+        public void StashSubstituteTests_Mock_Only_If_Exists()
+        {
+            using (var mock = StashSubstitute.Create())
+            {
+                Assert.Null(mock.Sub<ITest>(onlyIfAlreadyExists: true));
+
+                mock.Container.Register<ITest, TestObj>();
+
+                var r = mock.Sub<ITest>(onlyIfAlreadyExists: true);
+                Assert.NotNull(r);
+                Assert.IsNotType<TestObj>(r);
             }
         }
     }

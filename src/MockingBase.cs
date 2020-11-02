@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Stashbox.Resolution;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -8,7 +9,7 @@ namespace Stashbox.Mocking
     /// <summary>
     /// Represents a base class which holds shared functionality for every integration.
     /// </summary>
-    public class MockingBase : IDisposable
+    public abstract class MockingBase : IDisposable
     {
         private int disposed;
 
@@ -23,13 +24,19 @@ namespace Stashbox.Mocking
         protected ISet<Type> RequestedTypes { get; }
 
         /// <summary>
+        /// The mock types.
+        /// </summary>
+        protected ISet<Type> MockedTypes { get; }
+
+        /// <summary>
         /// Constructs a <see cref="MockingBase"/>.
         /// </summary>
-        /// <param name="container"></param>
-        protected MockingBase(IStashboxContainer container)
+        /// <param name="autoMock">If true, the container resolves unknown types automatically as mock.</param>
+        protected MockingBase(bool autoMock = true)
         {
-            this.Container = container;
             this.RequestedTypes = new HashSet<Type>();
+            this.MockedTypes = new HashSet<Type>();
+            this.Container = new StashboxContainer(c => { if (autoMock) c.WithUnknownTypeResolution(); });
         }
 
         /// <summary>

@@ -19,7 +19,7 @@ namespace Stashbox.Mocking
             this.GetExpressionInternal(typeInfo, resolutionContext);
 
         public bool CanUseForResolution(TypeInformation typeInfo, ResolutionContext resolutionContext) =>
-            !this.requestedTypes.Contains(typeInfo.Type) && typeInfo.Type.CanMock();
+            !resolutionContext.NullResultAllowed && !this.requestedTypes.Contains(typeInfo.Type) && typeInfo.Type.CanMock();
 
         protected abstract Expression GetExpressionInternal(TypeInformation typeInfo, ResolutionContext resolutionContext);
     }

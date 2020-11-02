@@ -158,5 +158,20 @@ namespace Stashbox.Mocking.FakeItEasy.Tests
                 Assert.Same(arg, m.Dep);
             }
         }
+
+        [Fact]
+        public void StashItEasyTests_Mock_Only_If_Exists()
+        {
+            using (var mock = StashItEasy.Create())
+            {
+                Assert.Null(mock.Fake<ITest>(onlyIfAlreadyExists: true));
+
+                mock.Container.Register<ITest, TestObj>();
+
+                var r = mock.Fake<ITest>(onlyIfAlreadyExists: true);
+                Assert.NotNull(r);
+                Assert.IsNotType<TestObj>(r);
+            }
+        }
     }
 }

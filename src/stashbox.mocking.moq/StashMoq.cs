@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using Moq;
+using Stashbox.Resolution;
 
 namespace Stashbox.Mocking.Moq
 {
@@ -13,13 +14,15 @@ namespace Stashbox.Mocking.Moq
         private readonly bool verifyAll;
         private int disposed;
 
-        private StashMoq(MockRepository repository, MockBehavior behavior, bool verifyAll)
-            : base(new StashboxContainer(config => config.WithUnknownTypeResolution()))
+        private StashMoq(MockRepository repository, MockBehavior behavior, bool verifyAll, bool useAutoMock)
+            : base(useAutoMock)
         {
             this.repository = repository;
             this.behavior = behavior;
             this.verifyAll = verifyAll;
-            base.Container.RegisterResolver(new MoqResolver(this.repository, base.RequestedTypes));
+
+            if (useAutoMock)
+                base.Container.RegisterResolver(new MoqResolver(repository, RequestedTypes));
         }
 
         /// <summary>
@@ -27,32 +30,34 @@ namespace Stashbox.Mocking.Moq
         /// </summary>
         /// <param name="behavior">The global mock behavior used by the injected mocks.</param>
         /// <param name="verifyAll">If true the disposal of this object will trigger a .VerifyAll() on the mock repository.</param>
+        /// <param name="useAutoMock">If true, the container resolves unknown types automatically as mock.</param>
         /// <returns>The <see cref="StashMoq"/> instance.</returns>
-        public static StashMoq Create(MockBehavior behavior = MockBehavior.Default, bool verifyAll = false) =>
-            new StashMoq(new MockRepository(behavior), behavior, verifyAll);
+        public static StashMoq Create(MockBehavior behavior = MockBehavior.Default, bool verifyAll = false, bool useAutoMock = true) =>
+            new StashMoq(new MockRepository(behavior), behavior, verifyAll, useAutoMock);
 
         /// <summary>
         /// Creates a mock object and registers it into the container.
         /// </summary>
         /// <typeparam name="TService">The type of the mock.</typeparam>
         /// <param name="mockBehavior">The behavior of the mock.</param>
+        /// <param name="onlyIfAlreadyExists">If true, the mock will be registered only, if there is an already existing service with the same type in the container.</param>
         /// <param name="args">The constructor arguments.</param>
-        /// <returns>The mock object.</returns>
-        public Mock<TService> Mock<TService>(MockBehavior? mockBehavior = null, params object[] args) where TService : class
+        /// <returns>The mock object. If <paramref name="onlyIfAlreadyExists"/> set to true and the type doesn't exist already in the container, null will be returned.</returns>
+        public Mock<TService> Mock<TService>(MockBehavior? mockBehavior = null, bool onlyIfAlreadyExists = false, params object[] args) where TService : class
         {
-            if (!base.Container.IsRegistered<TService>())
-            {
-                var mBehavior = mockBehavior ?? this.behavior;
+            if(base.Container.IsRegistered<TService>() && base.MockedTypes.Contains(typeof(TService)))
+                return ((IMocked<TService>)base.Container.Resolve<TService>()).Mock;
 
-                var mock = args.Length > 0 ? this.repository.Create<TService>(mBehavior, args) :
-                    this.repository.Create<TService>(mBehavior);
+            if (onlyIfAlreadyExists && !base.Container.IsRegistered<TService>())
+                return null;
 
-                base.Container.RegisterInstance(mock.Object);
-                return mock;
-            }
+            var mBehavior = mockBehavior ?? this.behavior;
+            var mock = args.Length > 0 ? this.repository.Create<TService>(mBehavior, args) :
+                this.repository.Create<TService>(mBehavior);
 
-            var resolved = (IMocked<TService>)base.Container.Resolve<TService>();
-            return resolved.Mock;
+            base.Container.ReMap<TService>(c => c.WithInstance(mock.Object));
+            base.MockedTypes.Add(typeof(TService));
+            return mock;
         }
 
         /// <inheritdoc />

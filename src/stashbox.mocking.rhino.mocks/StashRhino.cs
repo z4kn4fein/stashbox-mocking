@@ -1,4 +1,5 @@
 ﻿using Rhino.Mocks;
+using Stashbox.Resolution;
 
 namespace Stashbox.Mocking.Rhino.Mocks
 {
@@ -7,33 +8,40 @@ namespace Stashbox.Mocking.Rhino.Mocks
     /// </summary>
     public class StashRhino : MockingBase
     {
-        private StashRhino()
-            : base(new StashboxContainer(config => config.WithUnknownTypeResolution()))
+        private StashRhino(bool useAutoMock)
+            : base(useAutoMock)
         {
-            base.Container.RegisterResolver(new RhinoMocksResolver(base.RequestedTypes));
+            if (useAutoMock)
+                base.Container.RegisterResolver(new RhinoMocksResolver(RequestedTypes));
         }
 
         /// <summary>
         /// Creates a <see cref="StashRhino"/> instance.
         /// </summary>
+        /// <param name="useAutoMock">If true, the container resolves unknown types automatically as mock.</param>
         /// <returns></returns>
-        public static StashRhino Create() =>
-            new StashRhino();
+        public static StashRhino Create(bool useAutoMock = true) =>
+            new StashRhino(useAutoMock);
 
         /// <summary>
         /// Creates a dynamic mock and registers it into the contaier.
         /// </summary>
         /// <typeparam name="TService">The type of the mock.</typeparam>
+        /// <param name="onlyIfAlreadyExists">If true, the mock will be registered only, if there is an already existing service with the same type in the container.</param>
         /// <param name="args">The constructor arguments.</param>
-        /// <returns>The mock object.</returns>
-        public TService Mock<TService>(params object[] args) where TService : class
+        /// <returns>The mock object. If <paramref name="onlyIfAlreadyExists"/> set to true and the type doesn't exist already in the container, null will be returned.</returns>
+        public TService Mock<TService>(bool onlyIfAlreadyExists = false, params object[] args) where TService : class
         {
-            if (base.Container.IsRegistered<TService>())
+            if (base.Container.IsRegistered<TService>() && base.MockedTypes.Contains(typeof(TService)))
                 return base.Container.Resolve<TService>();
 
+            if (onlyIfAlreadyExists && !base.Container.IsRegistered<TService>())
+                return null;
 
             var mock = MockRepository.GenerateMock<TService>(args);
-            base.Container.RegisterInstance(mock, finalizerDelegate: m => m.VerifyAllExpectations());
+
+            base.Container.ReMap<TService>(c => c.WithInstance(mock).WithFinalizer(m => m.VerifyAllExpectations()));
+            base.MockedTypes.Add(typeof(TService));
             return mock;
         }
 
@@ -41,16 +49,21 @@ namespace Stashbox.Mocking.Rhino.Mocks
         /// Creates a strict mock and registers it into the contaier.
         /// </summary>
         /// <typeparam name="TService">The type of the mock.</typeparam>
+        /// <param name="onlyIfAlreadyExists">If true, the mock will be registered only, if there is an already existing service with the same type in the container.</param>
         /// <param name="args">The constructor arguments.</param>
-        /// <returns>The mock object.</returns>
-        public TService Strict<TService>(params object[] args) where TService : class
+        /// <returns>The mock object. If <paramref name="onlyIfAlreadyExists"/> set to true and the type doesn't exist already in the container, null will be returned.</returns>
+        public TService Strict<TService>(bool onlyIfAlreadyExists = false, params object[] args) where TService : class
         {
-            if (base.Container.IsRegistered<TService>())
+            if (base.Container.IsRegistered<TService>() && base.MockedTypes.Contains(typeof(TService)))
                 return base.Container.Resolve<TService>();
 
+            if (onlyIfAlreadyExists && !base.Container.IsRegistered<TService>())
+                return null;
 
             var mock = MockRepository.GenerateStrictMock<TService>(args);
-            base.Container.RegisterInstance(mock, finalizerDelegate: m => m.VerifyAllExpectations());
+
+            base.Container.ReMap<TService>(c => c.WithInstance(mock).WithFinalizer(m => m.VerifyAllExpectations()));
+            base.MockedTypes.Add(typeof(TService));
             return mock;
         }
 
@@ -58,16 +71,21 @@ namespace Stashbox.Mocking.Rhino.Mocks
         /// Creates a partial mock and registers it into the contaier.
         /// </summary>
         /// <typeparam name="TService">The type of the mock.</typeparam>
+        /// <param name="onlyIfAlreadyExists">If true, the mock will be registered only, if there is an already existing service with the same type in the container.</param>
         /// <param name="args">The constructor arguments.</param>
-        /// <returns>The mock object.</returns>
-        public TService Partial<TService>(params object[] args) where TService : class
+        /// <returns>The mock object. If <paramref name="onlyIfAlreadyExists"/> set to true and the type doesn't exist already in the container, null will be returned.</returns>
+        public TService Partial<TService>(bool onlyIfAlreadyExists = false, params object[] args) where TService : class
         {
-            if (base.Container.IsRegistered<TService>())
+            if (base.Container.IsRegistered<TService>() && base.MockedTypes.Contains(typeof(TService)))
                 return base.Container.Resolve<TService>();
 
+            if (onlyIfAlreadyExists && !base.Container.IsRegistered<TService>())
+                return null;
 
             var mock = MockRepository.GeneratePartialMock<TService>(args);
-            base.Container.RegisterInstance(mock, finalizerDelegate: m => m.VerifyAllExpectations());
+
+            base.Container.ReMap<TService>(c => c.WithInstance(mock).WithFinalizer(m => m.VerifyAllExpectations()));
+            base.MockedTypes.Add(typeof(TService));
             return mock;
         }
 
@@ -75,16 +93,21 @@ namespace Stashbox.Mocking.Rhino.Mocks
         /// Creates a simple stub and registers it into the contaier.
         /// </summary>
         /// <typeparam name="TService">The type of the stub.</typeparam>
+        /// <param name="onlyIfAlreadyExists">If true, the mock will be registered only, if there is an already existing service with the same type in the container.</param>
         /// <param name="args">The constructor arguments.</param>
-        /// <returns>The stub object.</returns>
-        public TService Stub<TService>(params object[] args) where TService : class
+        /// <returns>The mock object. If <paramref name="onlyIfAlreadyExists"/> set to true and the type doesn't exist already in the container, null will be returned.</returns>
+        public TService Stub<TService>(bool onlyIfAlreadyExists = false, params object[] args) where TService : class
         {
-            if (base.Container.IsRegistered<TService>())
+            if (base.Container.IsRegistered<TService>() && base.MockedTypes.Contains(typeof(TService)))
                 return base.Container.Resolve<TService>();
 
+            if (onlyIfAlreadyExists && !base.Container.IsRegistered<TService>())
+                return null;
 
             var mock = MockRepository.GenerateStub<TService>(args);
-            base.Container.RegisterInstance(mock);
+
+            base.Container.ReMap<TService>(c => c.WithInstance(mock).WithFinalizer(m => m.VerifyAllExpectations()));
+            base.MockedTypes.Add(typeof(TService));
             return mock;
         }
     }

@@ -1,30 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFrameworks>net40;net45;netstandard1.3;netstandard2.0</TargetFrameworks>
-        <AssemblyName>Stashbox.Mocking.Moq</AssemblyName>
-        <RootNamespace>Stashbox.Mocking.Moq</RootNamespace>
-        <AssemblyTitle>Stashbox.Mocking.Moq</AssemblyTitle>
-        <PackageId>Stashbox.Moq</PackageId>
-        <Authors>Peter Csajtai</Authors>
-        <Company>Peter Csajtai</Company>
-        <Product>Stashbox.Moq</Product>
-        <Copyright>Copyright © Peter Csajtai 2020</Copyright>
-      <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageProjectUrl>https://github.com/z4kn4fein/stashbox-mocking</PackageProjectUrl>
-        <PackageIcon>icon.png</PackageIcon>
-        <RepositoryUrl>https://github.com/z4kn4fein/stashbox-mocking</RepositoryUrl>
-        <RepositoryType>git</RepositoryType>
-        <PackageTags>Stashbox Moq mock unit test mocking</PackageTags>
-        <Description>Moq auto mocking integration for Stashbox.</Description>
-        <WarningsAsErrors>true</WarningsAsErrors>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <SignAssembly>true</SignAssembly>
-        <AssemblyOriginatorKeyFile>../../sn.snk</AssemblyOriginatorKeyFile>
-        <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
-        <Version>1.0.0</Version>
-        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    
+  <PropertyGroup>
+    <TargetFrameworks>net40;net45;netstandard1.3;netstandard2.0</TargetFrameworks>
+    <AssemblyName>Stashbox.Mocking.Moq</AssemblyName>
+    <RootNamespace>Stashbox.Mocking.Moq</RootNamespace>
+    <AssemblyTitle>Stashbox.Mocking.Moq</AssemblyTitle>
+    <PackageId>Stashbox.Moq</PackageId>
+    <Authors>Peter Csajtai</Authors>
+    <Company>Peter Csajtai</Company>
+    <Product>Stashbox.Moq</Product>
+    <Copyright>Copyright © Peter Csajtai 2020</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/z4kn4fein/stashbox-mocking</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/z4kn4fein/stashbox-mocking</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Stashbox Moq mock unit test mocking</PackageTags>
+    <Description>Moq auto mocking integration for Stashbox.</Description>
+    <WarningsAsErrors>true</WarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>../../sn.snk</AssemblyOriginatorKeyFile>
+    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+    <Version>1.0.0</Version>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <LangVersion>latest</LangVersion>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -35,31 +35,31 @@
   </ItemGroup>
 
 
-    <ItemGroup Condition="'$(TargetFramework)' == 'net45' Or '$(TargetFramework)' == 'netstandard2.0'">
-        <PackageReference Include="Moq" Version="4.14.1" />
-    </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45' Or '$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="Moq" Version="4.14.7" />
+  </ItemGroup>
 
-    <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
-      <PackageReference Include="Moq" Version="4.10.1" />
-    </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
+    <PackageReference Include="Moq" Version="4.10.1" />
+  </ItemGroup>
 
-    <ItemGroup Condition="'$(TargetFramework)' == 'net40'">
-        <PackageReference Include="Moq" Version="4.2.1510.2205" />
-    </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net40'">
+    <PackageReference Include="Moq" Version="4.2.1510.2205" />
+  </ItemGroup>
 
-    <ItemGroup>
-      <Compile Include="..\MockingBase.cs" Link="MockingBase.cs" />
-      <Compile Include="..\NotMockableTypeException.cs" Link="NotMockableTypeException.cs" />
-      <Compile Include="..\ResolverBase.cs" Link="ResolverBase.cs" />
-      <Compile Include="..\TypeExtensions.cs" Link="TypeExtensions.cs" />
-    </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\MockingBase.cs" Link="MockingBase.cs" />
+    <Compile Include="..\NotMockableTypeException.cs" Link="NotMockableTypeException.cs" />
+    <Compile Include="..\ResolverBase.cs" Link="ResolverBase.cs" />
+    <Compile Include="..\TypeExtensions.cs" Link="TypeExtensions.cs" />
+  </ItemGroup>
 
-    <ItemGroup>
-      <PackageReference Include="Stashbox" Version="3.2.8" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Stashbox" Version="3.2.9" />
+  </ItemGroup>
 
-    <ItemGroup>
-      <None Include="..\..\LICENSE" />
-      <None Include="..\..\img\icon.png" Pack="true" PackagePath="" />
-    </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\LICENSE" />
+    <None Include="..\..\img\icon.png" Pack="true" PackagePath="" />
+  </ItemGroup>
 </Project>
