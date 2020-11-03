@@ -32,11 +32,15 @@ namespace Stashbox.Mocking
         /// Constructs a <see cref="MockingBase"/>.
         /// </summary>
         /// <param name="autoMock">If true, the container resolves unknown types automatically as mock.</param>
-        protected MockingBase(bool autoMock = true)
+        /// <param name="container">An optional preconfigured container.</param>
+        protected MockingBase(bool autoMock = true, IStashboxContainer container = null)
         {
             this.RequestedTypes = new HashSet<Type>();
             this.MockedTypes = new HashSet<Type>();
-            this.Container = new StashboxContainer(c => { if (autoMock) c.WithUnknownTypeResolution(); });
+            this.Container = container ?? new StashboxContainer();
+
+            if(autoMock)
+                this.Container.Configure(c => c.WithUnknownTypeResolution());
         }
 
         /// <summary>

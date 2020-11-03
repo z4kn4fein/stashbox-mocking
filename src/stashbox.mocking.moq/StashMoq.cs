@@ -14,8 +14,8 @@ namespace Stashbox.Mocking.Moq
         private readonly bool verifyAll;
         private int disposed;
 
-        private StashMoq(MockRepository repository, MockBehavior behavior, bool verifyAll, bool useAutoMock)
-            : base(useAutoMock)
+        private StashMoq(MockRepository repository, MockBehavior behavior, bool verifyAll, bool useAutoMock, IStashboxContainer container)
+            : base(useAutoMock, container)
         {
             this.repository = repository;
             this.behavior = behavior;
@@ -31,9 +31,10 @@ namespace Stashbox.Mocking.Moq
         /// <param name="behavior">The global mock behavior used by the injected mocks.</param>
         /// <param name="verifyAll">If true the disposal of this object will trigger a .VerifyAll() on the mock repository.</param>
         /// <param name="useAutoMock">If true, the container resolves unknown types automatically as mock.</param>
+        /// <param name="container">An optional preconfigured container.</param>
         /// <returns>The <see cref="StashMoq"/> instance.</returns>
-        public static StashMoq Create(MockBehavior behavior = MockBehavior.Default, bool verifyAll = false, bool useAutoMock = true) =>
-            new StashMoq(new MockRepository(behavior), behavior, verifyAll, useAutoMock);
+        public static StashMoq Create(MockBehavior behavior = MockBehavior.Default, bool verifyAll = false, bool useAutoMock = true, IStashboxContainer container = null) =>
+            new StashMoq(new MockRepository(behavior), behavior, verifyAll, useAutoMock, container);
 
         /// <summary>
         /// Creates a mock object and registers it into the container.

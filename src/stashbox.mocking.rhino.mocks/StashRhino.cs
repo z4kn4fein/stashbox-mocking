@@ -8,8 +8,8 @@ namespace Stashbox.Mocking.Rhino.Mocks
     /// </summary>
     public class StashRhino : MockingBase
     {
-        private StashRhino(bool useAutoMock)
-            : base(useAutoMock)
+        private StashRhino(bool useAutoMock, IStashboxContainer container)
+            : base(useAutoMock, container)
         {
             if (useAutoMock)
                 base.Container.RegisterResolver(new RhinoMocksResolver(RequestedTypes));
@@ -19,9 +19,10 @@ namespace Stashbox.Mocking.Rhino.Mocks
         /// Creates a <see cref="StashRhino"/> instance.
         /// </summary>
         /// <param name="useAutoMock">If true, the container resolves unknown types automatically as mock.</param>
+        /// <param name="container">An optional preconfigured container.</param>
         /// <returns></returns>
-        public static StashRhino Create(bool useAutoMock = true) =>
-            new StashRhino(useAutoMock);
+        public static StashRhino Create(bool useAutoMock = true, IStashboxContainer container = null) =>
+            new StashRhino(useAutoMock, container);
 
         /// <summary>
         /// Creates a dynamic mock and registers it into the contaier.

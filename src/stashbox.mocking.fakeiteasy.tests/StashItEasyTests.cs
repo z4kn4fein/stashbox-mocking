@@ -173,5 +173,19 @@ namespace Stashbox.Mocking.FakeItEasy.Tests
                 Assert.IsNotType<TestObj>(r);
             }
         }
+
+        [Fact]
+        public void StashItEasyTests_With_PreConfiguredContainer()
+        {
+            var container = new StashboxContainer(c => c.WithUnknownTypeResolution(enabled: false));
+            using (var mock = StashItEasy.Create(container: container))
+            {
+                Assert.True(container.ContainerContext.ContainerConfiguration.UnknownTypeResolutionEnabled);
+
+                var m = container.Resolve<ITest>();
+
+                Assert.NotNull(m);
+            }
+        }
     }
 }

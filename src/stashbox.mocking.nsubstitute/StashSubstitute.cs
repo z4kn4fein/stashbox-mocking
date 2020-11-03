@@ -10,8 +10,8 @@ namespace Stashbox.Mocking.NSubstitute
     /// </summary>
     public class StashSubstitute : MockingBase
     {
-        private StashSubstitute(bool useAutoMock)
-            : base(useAutoMock)
+        private StashSubstitute(bool useAutoMock, IStashboxContainer container)
+            : base(useAutoMock, container)
         {
             if (useAutoMock)
                 base.Container.RegisterResolver(new NSubstituteResolver(RequestedTypes));
@@ -21,8 +21,9 @@ namespace Stashbox.Mocking.NSubstitute
         /// Creates a <see cref="StashSubstitute"/> instance.
         /// </summary>
         /// <param name="useAutoMock">If true, the container resolves unknown types automatically as mock.</param>
+        /// <param name="container">An optional preconfigured container.</param>
         /// <returns>The <see cref="StashSubstitute"/> instance.</returns>
-        public static StashSubstitute Create(bool useAutoMock = true) => new StashSubstitute(useAutoMock);
+        public static StashSubstitute Create(bool useAutoMock = true, IStashboxContainer container = null) => new StashSubstitute(useAutoMock, container);
 
         /// <summary>
         /// Creates a Partial substitute and registers it into the container.

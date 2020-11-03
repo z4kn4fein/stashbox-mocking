@@ -12,8 +12,8 @@ namespace Stashbox.Mocking.FakeItEasy
     {
         private readonly Action<IFakeOptions> globalOptions;
 
-        private StashItEasy(Action<IFakeOptions> globalOptions, bool useAutoMock)
-            : base(useAutoMock)
+        private StashItEasy(Action<IFakeOptions> globalOptions, bool useAutoMock, IStashboxContainer container)
+            : base(useAutoMock, container)
         {
             this.globalOptions = globalOptions;
 
@@ -26,9 +26,10 @@ namespace Stashbox.Mocking.FakeItEasy
         /// </summary>
         /// <param name="globalOptions">The global options for the created mocks.</param>
         /// <param name="useAutoMock">If true, the container resolves unknown types automatically as mock.</param>
+        /// <param name="container">An optional preconfigured container.</param>
         /// <returns>The <see cref="StashItEasy"/> instance.</returns>
-        public static StashItEasy Create(Action<IFakeOptions> globalOptions = null, bool useAutoMock = true) =>
-            new StashItEasy(globalOptions, useAutoMock);
+        public static StashItEasy Create(Action<IFakeOptions> globalOptions = null, bool useAutoMock = true, IStashboxContainer container = null) =>
+            new StashItEasy(globalOptions, useAutoMock, container);
 
         /// <summary>
         /// Creates a fake object and registers it into the container.

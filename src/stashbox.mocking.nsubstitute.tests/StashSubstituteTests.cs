@@ -172,5 +172,19 @@ namespace Stashbox.Mocking.NSubstitute.Tests
                 Assert.IsNotType<TestObj>(r);
             }
         }
+
+        [Fact]
+        public void StashSubstituteTests_With_PreConfiguredContainer()
+        {
+            var container = new StashboxContainer(c => c.WithUnknownTypeResolution(enabled: false));
+            using (var mock = StashSubstitute.Create(container: container))
+            {
+                Assert.True(container.ContainerContext.ContainerConfiguration.UnknownTypeResolutionEnabled);
+
+                var m = container.Resolve<ITest>();
+
+                Assert.NotNull(m);
+            }
+        }
     }
 }
