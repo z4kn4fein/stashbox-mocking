@@ -43,7 +43,7 @@
 
   <ItemGroup>
     <PackageReference Include="FakeItEasy" Version="6.2.1" />
-    <PackageReference Include="Stashbox" Version="3.2.9" />
+    <PackageReference Include="Stashbox" Version="3.4.0" />
   </ItemGroup>
 
   <ItemGroup>
