@@ -1,5 +1,5 @@
 # stashbox-mocking 
-[![Appveyor build status](https://img.shields.io/appveyor/ci/pcsajtai/stashbox-mocking/master.svg?label=appveyor)](https://ci.appveyor.com/project/pcsajtai/stashbox-mocking/branch/master) [![Travis CI build status](https://img.shields.io/travis/z4kn4fein/stashbox-mocking/master.svg?label=travis-ci)](https://travis-ci.org/z4kn4fein/stashbox-mocking) [![Sourcelink](https://img.shields.io/badge/sourcelink-enabled-brightgreen.svg)](https://github.com/dotnet/sourcelink)
+[![Appveyor build status](https://img.shields.io/appveyor/ci/pcsajtai/stashbox-mocking/master.svg?label=appveyor)](https://ci.appveyor.com/project/pcsajtai/stashbox-mocking/branch/master) [![Travis CI build status](https://img.shields.io/travis/z4kn4fein/stashbox-mocking/master.svg?label=travis-ci)](https://app.travis-ci.com/github/z4kn4fein/stashbox-mocking) [![Sourcelink](https://img.shields.io/badge/sourcelink-enabled-brightgreen.svg)](https://github.com/dotnet/sourcelink)
 
 Mocking framework integrations for [Stashbox](https://github.com/z4kn4fein/stashbox) that provide automatic mock creation for your services in unit tests.
 
