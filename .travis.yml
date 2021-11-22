@@ -1,31 +1,16 @@
 language: csharp
 mono: none
-dotnet: 2.0.0
-
-addons:
-  apt:
-    sources:
-    - sourceline: 'deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod trusty main'
-      key_url: 'https://packages.microsoft.com/keys/microsoft.asc'
-    packages:
-    - dotnet-sharedframework-microsoft.netcore.app-1.1.2
+dotnet: 3.1.100
 
 os:
   - linux
   - osx
 
-dist: trusty
-osx_image: xcode8.3
-  
-before_install:  
-  - if test "$TRAVIS_OS_NAME" == "osx"; then ulimit -n 2048; fi
-  
-before_script:
-  - dotnet restore src/stashbox.mocking.sln
+dist: bionic
+osx_image: xcode11.2
 
 script:
-  - if test "$TRAVIS_OS_NAME" != "osx"; then dotnet test src/stashbox.mocking.fakeiteasy.tests/stashbox.mocking.fakeiteasy.tests.csproj -c Release -f netcoreapp1.1; fi
-  - dotnet test src/stashbox.mocking.fakeiteasy.tests/stashbox.mocking.fakeiteasy.tests.csproj -c Release -f netcoreapp2.0
-  - if test "$TRAVIS_OS_NAME" != "osx"; then dotnet test src/stashbox.mocking.moq.tests/stashbox.mocking.moq.tests.csproj -c Release -f netcoreapp1.1; fi
-  - dotnet test src/stashbox.mocking.moq.tests/stashbox.mocking.moq.tests.csproj -c Release -f netcoreapp2.0
-  - if test "$TRAVIS_OS_NAME" != "osx"; then dotnet test src/stashbox.mocking.nsubstitute.tests/stashbox.mocking.nsubstitute.tests.csproj -c Release -f netcoreapp1.1; fi
+  - dotnet restore src/stashbox.mocking.sln
+  - dotnet test src/stashbox.mocking.fakeiteasy.tests/stashbox.mocking.fakeiteasy.tests.csproj -c Release -f netcoreapp3.1
+  - dotnet test src/stashbox.mocking.moq.tests/stashbox.mocking.moq.tests.csproj -c Release -f netcoreapp3.1
+  - dotnet test src/stashbox.mocking.nsubstitute.tests/stashbox.mocking.nsubstitute.tests.csproj -c Release -f netcoreapp3.1

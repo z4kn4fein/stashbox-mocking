@@ -1,5 +1,4 @@
 ﻿using NSubstitute;
-using Stashbox.Resolution;
 using Stashbox.Utils;
 using System;
 

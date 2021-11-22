@@ -1,5 +1,4 @@
 ﻿using Rhino.Mocks;
-using Stashbox.Resolution;
 
 namespace Stashbox.Mocking.Rhino.Mocks
 {

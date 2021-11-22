@@ -1,6 +1,5 @@
 ﻿using System.Threading;
 using Moq;
-using Stashbox.Resolution;
 
 namespace Stashbox.Mocking.Moq
 {

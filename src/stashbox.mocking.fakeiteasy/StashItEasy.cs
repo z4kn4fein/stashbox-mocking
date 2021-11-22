@@ -1,7 +1,6 @@
 ﻿using System;
 using FakeItEasy;
 using FakeItEasy.Creation;
-using Stashbox.Resolution;
 
 namespace Stashbox.Mocking.FakeItEasy
 {
