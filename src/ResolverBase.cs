@@ -16,7 +16,7 @@ namespace Stashbox.Mocking
         }
 
         public ServiceContext GetExpression(IResolutionStrategy resolutionStrategy, TypeInformation typeInfo, ResolutionContext resolutionContext) =>
-            new ServiceContext(this.GetExpressionInternal(typeInfo, resolutionContext), null);
+            this.GetExpressionInternal(typeInfo, resolutionContext).AsServiceContext();
 
         public bool CanUseForResolution(TypeInformation typeInfo, ResolutionContext resolutionContext) =>
             !resolutionContext.NullResultAllowed && !this.requestedTypes.Contains(typeInfo.Type) && typeInfo.Type.CanMock();
