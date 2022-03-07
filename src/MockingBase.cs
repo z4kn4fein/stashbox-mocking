@@ -38,7 +38,7 @@ namespace Stashbox.Mocking
             this.MockedTypes = new HashSet<Type>();
             this.Container = container ?? new StashboxContainer();
 
-            if(autoMock)
+            if (autoMock)
                 this.Container.Configure(c => c.WithUnknownTypeResolution());
         }
 
@@ -93,7 +93,7 @@ namespace Stashbox.Mocking
         public TService GetWithParamOverrides<TParam1, TService>(TParam1 param1) where TService : class
         {
             this.AddRequestedType(typeof(TService));
-            return this.Container.ResolveFactory<TParam1, TService>()(param1);
+            return this.Container.Resolve<Func<TParam1, TService>>()(param1);
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Stashbox.Mocking
         public TService GetWithParamOverrides<TParam1, TParam2, TService>(TParam1 param1, TParam2 param2) where TService : class
         {
             this.AddRequestedType(typeof(TService));
-            return this.Container.ResolveFactory<TParam1, TParam2, TService>()(param1, param2);
+            return this.Container.Resolve<Func<TParam1, TParam2, TService>>()(param1, param2);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Stashbox.Mocking
         public TService GetWithParamOverrides<TParam1, TParam2, TParam3, TService>(TParam1 param1, TParam2 param2, TParam3 param3) where TService : class
         {
             this.AddRequestedType(typeof(TService));
-            return this.Container.ResolveFactory<TParam1, TParam2, TParam3, TService>()(param1, param2, param3);
+            return this.Container.Resolve<Func<TParam1, TParam2, TParam3, TService>>()(param1, param2, param3);
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace Stashbox.Mocking
         public TService GetWithParamOverrides<TParam1, TParam2, TParam3, TParam4, TService>(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4) where TService : class
         {
             this.AddRequestedType(typeof(TService));
-            return this.Container.ResolveFactory<TParam1, TParam2, TParam3, TParam4, TService>()(param1, param2, param3, param4);
+            return this.Container.Resolve<Func<TParam1, TParam2, TParam3, TParam4, TService>>()(param1, param2, param3, param4);
         }
 
         /// <summary>

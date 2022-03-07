@@ -24,13 +24,13 @@ before_build:
 
 build_script:
 - nuget restore src\stashbox.mocking.sln
-- msbuild /t:Restore /p:Configuration=%CONFIGURATION% src\stashbox.mocking.sln
-- msbuild /t:Build /p:Configuration=%CONFIGURATION% src\stashbox.mocking.sln
+- dotnet restore src\stashbox.mocking.sln
+- dotnet build -c %configuration% src\stashbox.mocking.sln
   
 after_build:
-- msbuild /t:Pack /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.fakeiteasy\stashbox.mocking.fakeiteasy.csproj
-- msbuild /t:Pack /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.moq\stashbox.mocking.moq.csproj
-- msbuild /t:Pack /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.nsubstitute\stashbox.mocking.nsubstitute.csproj
+- dotnet pack -c %configuration% /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.fakeiteasy\stashbox.mocking.fakeiteasy.csproj
+- dotnet pack -c %configuration% /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.moq\stashbox.mocking.moq.csproj
+- dotnet pack -c %configuration% /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.nsubstitute\stashbox.mocking.nsubstitute.csproj
 - nuget pack src\stashbox.mocking.rhino.mocks\stashbox.mocking.rhino.mocks.csproj -Symbols -SymbolPackageFormat snupkg -OutputDirectory %APPVEYOR_BUILD_FOLDER%\artifacts
 
 test_script:
