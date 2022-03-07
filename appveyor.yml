@@ -10,20 +10,16 @@ configuration: Release
 
 image: Visual Studio 2022
 
-assembly_info:
+dotnet_csproj:
   patch: true
-  file: '**\AssemblyInfo.*'
+  file: 'src\*.csproj'
+  version: $(build_version)
+  package_version: $(build_version)
   assembly_version: $(build_version)
-  assembly_file_version: $(build_version)
-  assembly_informational_version: $(build_version)
-
-before_build:
-- ps: . .\patch-version.ps1 src\stashbox.mocking.fakeiteasy\stashbox.mocking.fakeiteasy.csproj $($env:build_version)
-- ps: . .\patch-version.ps1 src\stashbox.mocking.moq\stashbox.mocking.moq.csproj $($env:build_version)
-- ps: . .\patch-version.ps1 src\stashbox.mocking.nsubstitute\stashbox.mocking.nsubstitute.csproj $($env:build_version)
+  file_version: $(build_version)
+  informational_version: $(build_version)
 
 build_script:
-- nuget restore src\stashbox.mocking.sln
 - dotnet restore src\stashbox.mocking.sln
 - dotnet build -c %configuration% src\stashbox.mocking.sln
   
@@ -31,7 +27,6 @@ after_build:
 - dotnet pack -c %configuration% /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.fakeiteasy\stashbox.mocking.fakeiteasy.csproj
 - dotnet pack -c %configuration% /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.moq\stashbox.mocking.moq.csproj
 - dotnet pack -c %configuration% /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.nsubstitute\stashbox.mocking.nsubstitute.csproj
-- nuget pack src\stashbox.mocking.rhino.mocks\stashbox.mocking.rhino.mocks.csproj -Symbols -SymbolPackageFormat snupkg -OutputDirectory %APPVEYOR_BUILD_FOLDER%\artifacts
 
 test_script:
 - dotnet test src\stashbox.mocking.fakeiteasy.tests\stashbox.mocking.fakeiteasy.tests.csproj -c %CONFIGURATION% -f net452 --no-build
