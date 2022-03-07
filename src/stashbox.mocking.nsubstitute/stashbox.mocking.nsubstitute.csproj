@@ -9,7 +9,8 @@
     <Authors>Peter Csajtai</Authors>
     <Company>Peter Csajtai</Company>
     <Product>Stashbox.NSubstitute</Product>
-    <Copyright>Copyright © Peter Csajtai 2020</Copyright>
+    <Copyright>Copyright © Peter Csajtai 2022</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/z4kn4fein/stashbox-mocking</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
@@ -43,11 +44,12 @@
 
   <ItemGroup>
     <PackageReference Include="NSubstitute" Version="4.2.2" />
-    <PackageReference Include="Stashbox" Version="5.0.1" />
+    <PackageReference Include="Stashbox" Version="5.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="..\..\LICENSE" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="" />
     <None Include="..\..\img\icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
 

@@ -9,7 +9,8 @@
     <Authors>Peter Csajtai</Authors>
     <Company>Peter Csajtai</Company>
     <Product>Stashbox.Moq</Product>
-    <Copyright>Copyright © Peter Csajtai 2020</Copyright>
+    <Copyright>Copyright © Peter Csajtai 2022</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/z4kn4fein/stashbox-mocking</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
@@ -38,7 +39,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Stashbox" Version="5.0.1" />
+    <PackageReference Include="Stashbox" Version="5.2.0" />
 	<PackageReference Include="Moq" Version="4.14.7" />
 	<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
   </ItemGroup>
@@ -46,5 +47,6 @@
   <ItemGroup>
     <None Include="..\..\LICENSE" />
     <None Include="..\..\img\icon.png" Pack="true" PackagePath="" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 </Project>

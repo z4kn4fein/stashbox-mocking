@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Peter Csajtai")]
 [assembly: AssemblyProduct("Stashbox.RhinoMocks")]
-[assembly: AssemblyCopyright("Copyright © Peter Csajtai 2020")]
+[assembly: AssemblyCopyright("Copyright © Peter Csajtai 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
