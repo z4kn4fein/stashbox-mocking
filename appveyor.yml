@@ -12,7 +12,7 @@ image: Visual Studio 2022
 
 dotnet_csproj:
   patch: true
-  file: 'src\*.csproj'
+  file: '**\*.csproj'
   version: $(build_version)
   package_version: $(build_version)
   assembly_version: $(build_version)
