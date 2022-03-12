@@ -1,5 +1,5 @@
 environment:
-  build_version: 4.1.0
+  build_version: 4.1.1
 
 version: $(build_version)-{build}
 
@@ -9,6 +9,11 @@ pull_requests:
 configuration: Release
 
 image: Visual Studio 2022
+
+skip_commits:
+  files:
+    - .github/
+    - '**/*.md'
 
 dotnet_csproj:
   patch: true
@@ -21,12 +26,12 @@ dotnet_csproj:
 
 build_script:
 - dotnet restore src\stashbox.mocking.sln
-- dotnet build -c %configuration% src\stashbox.mocking.sln
+- dotnet build -c %configuration% /p:ContinuousIntegrationBuild=true src\stashbox.mocking.sln
   
 after_build:
-- dotnet pack -c %configuration% /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.fakeiteasy\stashbox.mocking.fakeiteasy.csproj
-- dotnet pack -c %configuration% /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.moq\stashbox.mocking.moq.csproj
-- dotnet pack -c %configuration% /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:Configuration=%CONFIGURATION% /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.nsubstitute\stashbox.mocking.nsubstitute.csproj
+- dotnet pack -c %configuration% /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.fakeiteasy\stashbox.mocking.fakeiteasy.csproj
+- dotnet pack -c %configuration% /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.moq\stashbox.mocking.moq.csproj
+- dotnet pack -c %configuration% /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:PackageOutputPath=..\..\artifacts src\stashbox.mocking.nsubstitute\stashbox.mocking.nsubstitute.csproj
 
 test_script:
 - dotnet test src\stashbox.mocking.fakeiteasy.tests\stashbox.mocking.fakeiteasy.tests.csproj -c %CONFIGURATION% -f net452 --no-build

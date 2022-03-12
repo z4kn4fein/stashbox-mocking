@@ -1,0 +1,34 @@
+name: Build on Linux and macOS
+on:
+  push:
+    branches: [ master ]
+    paths-ignore:
+      - '**.md'
+      - 'appveyor*'
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  build-test:
+    name: Build & test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ macos-latest, ubuntu-latest ]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: | 
+            3.1.x
+      - name: Restore
+        run: dotnet restore
+      - name: Test
+        run: |
+          dotnet test src/stashbox.mocking.fakeiteasy.tests/stashbox.mocking.fakeiteasy.tests.csproj -c Release -f netcoreapp3.1 --no-restore
+          dotnet test src/stashbox.mocking.moq.tests/stashbox.mocking.moq.tests.csproj -c Release -f netcoreapp3.1 --no-restore
+          dotnet test src/stashbox.mocking.nsubstitute.tests/stashbox.mocking.nsubstitute.tests.csproj -c Release -f netcoreapp3.1 --no-restore 
