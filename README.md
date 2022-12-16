@@ -1,6 +1,6 @@
 # stashbox-mocking 
 [![Appveyor build status](https://img.shields.io/appveyor/ci/pcsajtai/stashbox-mocking/master.svg?logo=appveyor&logoColor=white)](https://ci.appveyor.com/project/pcsajtai/stashbox-mocking/branch/master) 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/z4kn4fein/stashbox-mocking/Build%20on%20Linux%20and%20macOS?logo=GitHub)](https://github.com/z4kn4fein/stashbox-mocking/actions/workflows/linux-macOS-CI.yml) 
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/z4kn4fein/stashbox-mocking/linux-macOS-CI.yml?logo=GitHub&branch=master)](https://github.com/z4kn4fein/stashbox-mocking/actions/workflows/linux-macOS-CI.yml) 
 [![Sourcelink](https://img.shields.io/badge/sourcelink-enabled-brightgreen.svg)](https://github.com/dotnet/sourcelink)
 
 Mocking framework integrations for [Stashbox](https://github.com/z4kn4fein/stashbox) that provide automatic mock creation for your services in unit tests.
