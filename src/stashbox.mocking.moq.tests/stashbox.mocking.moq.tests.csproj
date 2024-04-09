@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net452;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net452;net8.0</TargetFrameworks>
     <AssemblyName>Stashbox.Mocking.Moq.Tests</AssemblyName>
     <RootNamespace>Stashbox.Mocking.Moq.Tests</RootNamespace>
     <SignAssembly>true</SignAssembly>
